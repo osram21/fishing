@@ -35,7 +35,7 @@ public class MemberTest {
 		mDao.selectByNo("test1");
 	}
 	
-	@Test
+	//@Test
 	public void selectList()throws Exception{
 		mDao.memberList();
 	}

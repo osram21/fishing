@@ -3,12 +3,12 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dgit.persistence.ContentDao">
-		<resultMap type="content" id="contentResult">
-			<result property="boardNo" column="board_no"/>
-			<result property="boardContent" column="board_content"/>
-		</resultMap>
-		
 		<insert id="contentInsert">
-			insert into content(board_content)values(#{boardContent})
-		</insert>	
+			insert into content(board_no,board_content)values
+			(#{boardNo},#{boardContent})
+		</insert>
+		
+		<select id="contentSelect" resultType="Content">
+			select board_no, board_content from content
+		</select>	
 </mapper>

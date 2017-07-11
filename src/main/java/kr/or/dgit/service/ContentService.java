@@ -1,5 +1,6 @@
 package kr.or.dgit.service;
 
+import kr.or.dgit.domain.Board;
 import kr.or.dgit.domain.Content;
 
 public interface ContentService {

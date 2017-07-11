@@ -18,22 +18,24 @@ import kr.or.dgit.service.BoardService;
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/root-context.xml"})
 public class BoardTest {
 	@Autowired
-	private BoardDao bDao;
+	private BoardDao dao;
 	@Autowired
-	private ContentDao cDao;
-	@Autowired
-	private MemberDao mDao;
+	private ContentDao cdao;
+	
+	//@Test
+	public void insertTest()throws Exception{
+		Board b = new Board();
+		b.setBoardNo(16);
+		b.setMemberNo(9);
+		b.setBoardTitle("타이틀1");
+		dao.boardInsert(b);
+	}
 	
 	@Test
-	public void insertTest()throws Exception{
-		Member m = new Member();
-		m.setMemberName("테스트2");
-		Board b = new Board();
-		b.setBoardTitle("타이틀");
+	public void contentInsert()throws Exception{
 		Content c = new Content();
-		c.setBoardContent("내용");
-		mDao.memberInsert(m);
-		bDao.boardInsert(b);
-		cDao.contentInsert(c);
-	}
+		c.setBoardNo(1);
+		c.setBoardContent("내용1");
+		cdao.contentInsert(c);
+	}	
 }

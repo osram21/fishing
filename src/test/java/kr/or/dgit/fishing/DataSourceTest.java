@@ -1,4 +1,4 @@
-package kr.or.dgit.test;
+package kr.or.dgit.fishing;
 
 import java.sql.Connection;
 

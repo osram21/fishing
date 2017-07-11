@@ -8,40 +8,10 @@ public class Board {
 	private String boardTitle;
 	private int boardCount;
 	private Date boardStartdate;
-	//private String boardContent;
 	/*----------업로드-------------*/
+	
 	public Board() {}
-
-	/*public Board(int boardNo, int memberNo, String boardTitle, int boardCount, Date boardStartdate,
-			String boardContent) {
-		super();
-		this.boardNo = boardNo;
-		this.memberNo = memberNo;
-		this.boardTitle = boardTitle;
-		this.boardCount = boardCount;
-		this.boardStartdate = boardStartdate;
-		this.boardContent = boardContent;
-	}*/
 	
-	
-
-	/*public String getBoardContent() {
-		return boardContent;
-	}
-
-	public void setBoardContent(String boardContent) {
-		this.boardContent = boardContent;
-	}*/
-public Board(int boardNo, int memberNo, String boardTitle, int boardCount, Date boardStartdate) {
-	super();
-	this.boardNo = boardNo;
-	this.memberNo = memberNo;
-	this.boardTitle = boardTitle;
-	this.boardCount = boardCount;
-	this.boardStartdate = boardStartdate;
-}
-
-
 	public int getBoardNo() {
 		return boardNo;
 	}
