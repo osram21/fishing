@@ -34,7 +34,7 @@ public class BoardTest {
 	@Test
 	public void contentInsert()throws Exception{
 		Content c = new Content();
-		c.setBoardNo(1);
+		c.setBoardNo(7);
 		c.setBoardContent("내용1");
 		cdao.contentInsert(c);
 	}	
