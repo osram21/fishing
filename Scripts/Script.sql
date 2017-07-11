@@ -5,23 +5,23 @@ CREATE TABLE member (
 	member_pass      VARCHAR(50) NOT NULL, -- 회원 비번
 	member_name      VARCHAR(50) NOT NULL, -- 회원 이름
 	member_email     VARCHAR(50) NOT NULL, -- 회원 이메일
-	member_startdate datetime    NOT null,  -- 회원 가입일
+	member_startdate datetime    NOT null default now(),  -- 회원 가입일
 	PRIMARY KEY (member_no)
 );
 
 -- 게시판
 CREATE TABLE board (
 	board_no        int      NOT null AUTO_increment, -- 게시물 번호
-	member_no       int      NULL,     -- 회원 번호
+	member_no       int      not NULL,     -- 회원 번호
 	board_title     VARCHAR(100) NOT NULL, -- 게시물 제목
-	board_count     int      NOT NULL, -- 조회수
-	board_startdate datetime     NOT null,  -- 작성일자
+	board_count     int      default 0, -- 조회수
+	board_startdate datetime     NOT null default now(),  -- 작성일자
 	PRIMARY KEY (board_no)
 );
 
 -- 게시글 내용
 create table content(
-	board_no int not null AUTO_increment,
+	board_no int not null,
 	board_content text null,
 	primary key(board_no)
 );
@@ -32,7 +32,7 @@ CREATE TABLE reply (
 	board_no        int       NOT NULL, -- 게시물 번호
 	member_no       int       NOT NULL, -- 회원 번호
 	reply_content   VARCHAR(1000) NOT NULL, -- 댓글 내용
-	reply_startdate datetime      NOT null,  -- 댓글일자
+	reply_startdate datetime      NOT null default now(),  -- 댓글일자
 	PRIMARY KEY (reply_no)
 );
 
@@ -41,26 +41,26 @@ CREATE TABLE upload (
 	upload_no   int          not null AUTO_increment,
 	upload_file VARCHAR(200) NOT NULL, -- 업로드 파일
 	board_no    int      NOT NULL, -- 게시물 번호
-	upload_date datetime     NOT null,  -- 업로드날짜
+	upload_date datetime     NOT null default now(),  -- 업로드날짜
 	primary key(upload_no)
 );
 
 -- 포인트장소
 CREATE TABLE point (
 	point_no      int      NOT null AUTO_increment, -- 포인트 번호
-	member_no     int      NULL,     -- 회원 번호
+	member_no     int      not NULL,     -- 회원 번호
 	point_file    VARCHAR(200) NULL,     -- 사진 파일
 	point_where   VARCHAR(200) NOT NULL, -- 장소 
 	point_title   VARCHAR(100) NOT NULL, -- 글 제목
 	point_latiude  double         NULL, -- 위도
 	point_hardness double         null, -- 경도
-	point_count   int      NOT NULL, -- 조회수
-	point_date    datetime     null,      -- 글 날짜
+	point_count   int      default 0, -- 조회수
+	point_date    datetime   not null default now(),      -- 글 날짜
 	PRIMARY KEY (point_no)
 );
 
 create table pt_content(
-	point_no int not null AUTO_increment,
+	point_no int not null,
 	point_content text null,
 	primary key(point_no)
 );
@@ -73,7 +73,7 @@ CREATE TABLE point_reply (
 	pr_f       int   NULL,     -- 장소평점
 	pr_s       int   NULL,     -- 어류평점
 	pr_content TEXT      NULL,     -- 댓글 내용
-	pr_date    TIMESTAMP NOT null,  -- 댓글 일자
+	pr_date    TIMESTAMP not null default now(),  -- 댓글 일자
 	primary key(pr_no)
 );
 
@@ -130,3 +130,34 @@ drop table upload;
 drop table point_reply;
 drop table point;
 drop table score;
+
+-- 샘플데이터
+insert into member(member_id,member_pass,member_name,member_email,member_startdate)
+values('osram21','1234','김성환','osram21@naver.com',now()),
+('osram22','1234','김성환','osram22@naver.com',now()),
+('osram23','1234','신진욱','osram23@naver.com',now()),
+('osram24','1234','이승우','osram24@naver.com',now()),
+('osram25','1234','설동훈','osram25@naver.com',now());
+
+insert into board(member_no,board_title,board_count,board_startdate)
+values(1,'글타이틀1',0,now()),
+(2,'글타이틀2',0,now()),
+(3,'글타이틀3',0,now()),
+(4,'글타이틀4',0,now()),
+(5,'글타이틀5',0,now());
+
+insert into content(board_no,board_content)values
+(1,'글쓴다1234'),(2,'글쓴다12'),(3,'글쓴다11'),(4,'글쓴다33'),(5,'글쓴다55');
+
+select*from member;
+select*from board;
+select*from content;
+
+-- 게시판 쿼리
+select d.board_title, d.board_count, d.board_startdate,b.member_name,c.board_content 
+from board d join member b on d.board_no = b.member_no join content c on d.board_no=c.board_no;
+
+select *
+from board d join content c on d.board_no = c.board_no where d.board_no = 1;
+
+

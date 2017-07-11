@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.dgit.persistence.MemberDao">
+		<resultMap type="Member" id="MemberResult">
+			<result property="memberNo" column="member_no"/>
+			<result property="memberId" column="member_id"/>
+			<result property="memberPass" column="member_pass"/>
+			<result property="memberName" column="member_name"/>
+			<result property="memberEmail" column="member_email"/>
+			<result property="memberStartdate" column="member_startdate"/>
+		</resultMap>
+		
+		<insert id="memberInsert">
+			insert into member(member_id,member_pass,member_name,member_email)values
+			(#{memberId},#{memberPass},#{memberName},#{memberEmail})
+		</insert>
+		
+		<select id="memberbyNo" resultMap="MemberResult">
+			select*from member where member_id = #{memberId}
+		</select>
+		
+		<select id="memberList" resultMap="MemberResult">
+			select*from member;
+		</select>
+		
+		<update id="memberUpdate">
+			update member
+			set member_pass=${memberPass},member_name=#{memberName},member_email=#{memberEmail}
+			where member_id=#{memberId}
+		</update>
+		
+		<delete id="memberDel">
+			delete from member where member_id = #{memberId}
+		</delete>
+		
+</mapper>

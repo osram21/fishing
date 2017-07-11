@@ -6,10 +6,42 @@ public class Board {
 	private int boardNo;
 	private  int memberNo;
 	private String boardTitle;
-	private String boardContent;
 	private int boardCount;
 	private Date boardStartdate;
+	//private String boardContent;
+	/*----------업로드-------------*/
+	public Board() {}
+
+	/*public Board(int boardNo, int memberNo, String boardTitle, int boardCount, Date boardStartdate,
+			String boardContent) {
+		super();
+		this.boardNo = boardNo;
+		this.memberNo = memberNo;
+		this.boardTitle = boardTitle;
+		this.boardCount = boardCount;
+		this.boardStartdate = boardStartdate;
+		this.boardContent = boardContent;
+	}*/
 	
+	
+
+	/*public String getBoardContent() {
+		return boardContent;
+	}
+
+	public void setBoardContent(String boardContent) {
+		this.boardContent = boardContent;
+	}*/
+public Board(int boardNo, int memberNo, String boardTitle, int boardCount, Date boardStartdate) {
+	super();
+	this.boardNo = boardNo;
+	this.memberNo = memberNo;
+	this.boardTitle = boardTitle;
+	this.boardCount = boardCount;
+	this.boardStartdate = boardStartdate;
+}
+
+
 	public int getBoardNo() {
 		return boardNo;
 	}
@@ -28,12 +60,7 @@ public class Board {
 	public void setBoardTitle(String boardTitle) {
 		this.boardTitle = boardTitle;
 	}
-	public String getBoardContent() {
-		return boardContent;
-	}
-	public void setBoardContent(String boardContent) {
-		this.boardContent = boardContent;
-	}
+	
 	public int getBoardCount() {
 		return boardCount;
 	}
@@ -46,9 +73,10 @@ public class Board {
 	public void setBoardStartdate(Date boardStartdate) {
 		this.boardStartdate = boardStartdate;
 	}
+
 	@Override
 	public String toString() {
-		return "Board [boardNo=" + boardNo + ", memberNo=" + memberNo + ", boardTitle=" + boardTitle + ", boardContent="
-				+ boardContent + ", boardCount=" + boardCount + ", boardStartdate=" + boardStartdate + "]";
+		return "Board [boardNo=" + boardNo + ", memberNo=" + memberNo + ", boardTitle=" + boardTitle + ", boardCount="
+				+ boardCount + ", boardStartdate=" + boardStartdate + "]";
 	}
 }

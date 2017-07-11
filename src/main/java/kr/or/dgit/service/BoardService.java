@@ -1,7 +1,7 @@
-package kr.or.dgit.persistence;
+package kr.or.dgit.service;
 
 import kr.or.dgit.domain.Board;
 
-public interface BoardDao {
+public interface BoardService {
 	public void boardInsert(Board board)throws Exception;
 }
