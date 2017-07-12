@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.dgit.domain.Board;
 import kr.or.dgit.domain.Content;
@@ -15,18 +16,32 @@ public class BoardServiceImpl implements BoardService{
 	@Autowired
 	private BoardDao dao;
 	
-	@Autowired
-	private ContentDao cdao;
-
+	@Transactional
 	@Override
-	public void boardInsert(Board board,Content content) throws Exception {
+	public void boardInsert(Board board) throws Exception {
 		dao.boardInsert(board);
-		cdao.contentInsert(content);
+		dao.contentInsert(board);
 	}
 
 	@Override
-	public List<Board> boardSelect() throws Exception {
-		return dao.boardSelect();
+	public List<Board> boardList() throws Exception {
+		return dao.boardList();
 	}
-	
+
+	@Override
+	public Board boardRead(int boardNo) throws Exception {
+		return dao.boardRead(boardNo);
+	}
+
+	@Override
+	public void boardDelete(int boardNo) throws Exception {
+		dao.boardDel(boardNo);
+		dao.contentDel(boardNo);
+	}
+
+	@Override
+	public void boardUpdate(Board board) throws Exception {
+		dao.boardUpdate(board);
+		dao.contentUpdate(board);
+	}
 }

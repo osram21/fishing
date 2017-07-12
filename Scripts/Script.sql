@@ -1,18 +1,17 @@
 -- 회원
 CREATE TABLE member (
-	member_no        int     NOT null AUTO_increment, -- 회원 번호
-	member_id        VARCHAR(50) NOT NULL, -- 회원 아이디
+	member_id        VARCHAR(50) NOT null, -- 회원 아이디
 	member_pass      VARCHAR(50) NOT NULL, -- 회원 비번
 	member_name      VARCHAR(50) NOT NULL, -- 회원 이름
 	member_email     VARCHAR(50) NOT NULL, -- 회원 이메일
 	member_startdate datetime    NOT null default now(),  -- 회원 가입일
-	PRIMARY KEY (member_no)
+	PRIMARY KEY (member_id)
 );
 
 -- 게시판
 CREATE TABLE board (
 	board_no        int      NOT null AUTO_increment, -- 게시물 번호
-	member_no       int      not NULL,     -- 회원 번호
+	member_id       VARCHAR(50)      not NULL,     -- 회원 아이디
 	board_title     VARCHAR(100) NOT NULL, -- 게시물 제목
 	board_count     int      default 0, -- 조회수
 	board_startdate datetime     NOT null default now(),  -- 작성일자
@@ -160,4 +159,5 @@ from board d join member b on d.board_no = b.member_no join content c on d.board
 select *
 from board d join content c on d.board_no = c.board_no where d.board_no = 1;
 
-
+select * from board b join content c 
+on b.board_no = c.board_no where b.board_no=1;

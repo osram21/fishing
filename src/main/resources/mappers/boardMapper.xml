@@ -3,12 +3,46 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.or.dgit.persistence.BoardDao">
+		<!-- board insert -->
 		<insert id="boardInsert">
-			INSERT INTO board(board_no,member_no,board_title)VALUES
-			(#{boardNo},#{memberNo},#{boardTitle})	
+			INSERT INTO board(member_id,board_title)VALUES
+			(#{memberId},#{boardTitle})	
 		</insert>
 		
-		<select id="boardSelect" resultType="Board">
-			select board_no,member_no,board_title from board
+		<!-- content insert -->
+		<insert id="contentInsert">
+			insert into content(board_no,board_content)values
+			(LAST_INSERT_ID(),#{boardContent})
+		</insert>
+		
+		<!-- board list -->
+		<select id="boardList" resultType="Board">
+			select * from board
 		</select>
+		
+		<!-- read -->
+		<select id="boardRead" resultType="Board">
+			select * from board b join content c 
+			on b.board_no = c.board_no where b.board_no=#{boardNo}
+		</select>
+		
+		<!-- delete -->
+		<delete id="boardDel">
+			delete from board where board_no=#{boardNo}
+		</delete>
+		<delete id="contentDel">
+			delete from content where board_no=#{boardNo}
+		</delete>
+		
+		<!-- update -->
+		<update id="boardUpdate">
+			update board
+			set board_title=#{boardTitle}
+			where board_no = #{boardNo}
+		</update>
+		<update id="contentUpdate">
+			update content
+			set board_content=#{boardContent}
+			where board_no = #{boardNo}
+		</update>
 </mapper>

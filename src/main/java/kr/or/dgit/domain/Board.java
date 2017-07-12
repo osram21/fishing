@@ -4,26 +4,39 @@ import java.util.Date;
 
 public class Board {
 	private int boardNo;
-	private  int memberNo;
+	private String memberId;
 	private String boardTitle;
 	private int boardCount;
 	private Date boardStartdate;
+	private String boardContent;
 	/*----------업로드-------------*/
+	
 	
 	public Board() {}
 	
+	public String getBoardContent() {
+		return boardContent;
+	}
+
+	public void setBoardContent(String boardContent) {
+		this.boardContent = boardContent;
+	}
+
 	public int getBoardNo() {
 		return boardNo;
 	}
 	public void setBoardNo(int boardNo) {
 		this.boardNo = boardNo;
 	}
-	public int getMemberNo() {
-		return memberNo;
+	
+	public String getMemberId() {
+		return memberId;
 	}
-	public void setMemberNo(int memberNo) {
-		this.memberNo = memberNo;
+
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
 	}
+
 	public String getBoardTitle() {
 		return boardTitle;
 	}
@@ -46,7 +59,7 @@ public class Board {
 
 	@Override
 	public String toString() {
-		return "Board [boardNo=" + boardNo + ", memberNo=" + memberNo + ", boardTitle=" + boardTitle + ", boardCount="
-				+ boardCount + ", boardStartdate=" + boardStartdate + "]";
+		return "Board [boardNo=" + boardNo + ", memberId=" + memberId + ", boardTitle=" + boardTitle + ", boardCount="
+				+ boardCount + ", boardStartdate=" + boardStartdate + ", boardContent=" + boardContent + "]";
 	}
 }
