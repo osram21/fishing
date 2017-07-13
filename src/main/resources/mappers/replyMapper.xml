@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.dgit.persistence.ReplyDao">
+		<select id="replyList" resultType="Reply">
+	 		select*from reply
+		</select>
+		<insert id="replyInsert">
+			insert into reply (board_no,reply_content,member_id)
+			values (#{boardNo},#{replyContent},#{memberId})
+		</insert>
+		<update id="replyUpdate">
+			update reply 
+			set reply_content = #{replyContent}
+			where reply_no = #{replyNo}
+		</update>
+		<delete id="replyDel">
+			delete from reply where reply_no = #{replyNo}
+		</delete>
+	
+	<select id="listPage" resultType="Reply">
+		select*from reply where board_no=#{boardNo}
+		limit #{cri.pageStart},#{cri.perPageNum}
+	</select>
+	<select id="count" resultType="int">
+		select count(board_no) from reply where board_no = #{boarNo}
+	</select>
+</mapper>

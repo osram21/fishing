@@ -7,7 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.or.dgit.domain.Board;
-import kr.or.dgit.domain.Content;
+import kr.or.dgit.domain.Criteria;
+import kr.or.dgit.domain.SerchCriteria;
 
 @Repository
 public class BoardImpl implements BoardDao{
@@ -48,5 +49,32 @@ public class BoardImpl implements BoardDao{
 	public void contentUpdate(Board board) throws Exception {
 		session.update(namespace+".contentUpdate",board);
 	}
-
+	@Override
+	public List<Board> listPage(int page) throws Exception {
+		if(page<=0){
+			page = 1;
+		}
+		page = (page-1)*10;//해당 page의 시작 게시물 index를 구함
+		return session.selectList(namespace+".listPage",page);
+	}
+	@Override
+	public void updatecnt(int boardNo) throws Exception {
+		session.selectOne(namespace+".updateCnt",boardNo);
+	}
+	@Override
+	public List<Board> listCriteria(Criteria cri) throws Exception {
+		return session.selectList(namespace+".listCriteria",cri);
+	}
+	@Override
+	public int totalCount() throws Exception {
+		return session.selectOne(namespace+".totalCount");
+	}
+	@Override
+	public List<Board> listSearch(SerchCriteria cri) throws Exception {
+		return session.selectList(namespace+".listSearch",cri);
+	}
+	@Override
+	public int searchCount(SerchCriteria cri) throws Exception {
+		return session.selectOne(namespace+".searchCount",cri);
+	}
 }

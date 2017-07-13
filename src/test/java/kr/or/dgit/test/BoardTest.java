@@ -9,12 +9,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import kr.or.dgit.domain.Board;
-import kr.or.dgit.domain.Content;
-import kr.or.dgit.domain.Member;
 import kr.or.dgit.persistence.BoardDao;
-import kr.or.dgit.persistence.ContentDao;
-import kr.or.dgit.persistence.MemberDao;
 import kr.or.dgit.service.BoardService;
+
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/root-context.xml"})
@@ -23,8 +21,6 @@ public class BoardTest {
 	private BoardService service;
 	@Autowired
 	private BoardDao dao;
-	@Autowired
-	private ContentDao cdao;
 	
 	//@Test
 	public void insertTest()throws Exception{
@@ -35,20 +31,12 @@ public class BoardTest {
 		service.boardInsert(b);
 	}
 	
-	//@Test
-	public void contentInsert()throws Exception{
-		Content c = new Content();
-		c.setBoardNo(7);
-		c.setBoardContent("내용1");
-		cdao.contentInsert(c);
-	}	
-	
 	@Test
 	public void boardSelectWithContent()throws Exception{
-		/*List<Board> list = dao.boardRead(boardNo)
+		/*List<Board> list = dao.boardRead(1);
 		for(Board b : list){
 			System.out.println(b);
 		}*/
-		dao.boardRead(1);
+		System.out.println(dao.boardRead(1));
 	}
 }

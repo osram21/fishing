@@ -27,7 +27,7 @@
 $(function () {
 	$("#modify").click(function(){
 		$("#f1").attr("action","modify");
-		/* $("#f1").attr("method","get"); */
+		$("#f1").attr("method","get");
 		$("#f1").submit();
 	});
 	$("#delete").click(function(){

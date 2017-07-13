@@ -45,4 +45,54 @@
 			set board_content=#{boardContent}
 			where board_no = #{boardNo}
 		</update>
+		
+		<!-- 페이징 -->
+		<select id="listPage" resultType="Board">
+				select*from board
+				limit #{page},10
+		</select>
+		
+		<select id="listCriteria" resultType="Board">
+			select*from board
+			limit #{pageStart},#{perPageNum}
+		</select>
+	
+		<select id="totalCount" resultType="int">
+			select count(board_no) from board
+		</select>
+	
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">
+				where board_title like concat('%',#{keyword},'%')
+			</if>
+			<if test="searchType == 'c'.toString()">
+				where board_content like concat('%',#{keyword},'%')
+			</if>
+			<if test="searchType == 'w'.toString()">
+				where member_id like concat('%',#{keyword},'%')
+			</if>
+			<if test="searchType == 'tc'.toString()">
+				where board_title like concat('%',#{keyword},'%') or board_content like concat('%',#{keyword},'%')
+			</if>
+			<if test="searchType == 'cw'.toString()">
+				where board_content like concat('%',#{keyword},'%') or member_id like concat('%',#{keyword},'%')
+			</if>
+			<if test="searchType == 'tcw'.toString()">
+				where board_title like concat('%',#{keyword},'%') or board_content like concat('%',#{keyword},'%') or
+				member_id like concat('%',#{keyword},'%')
+			</if>
+		</if>
+	</sql>
+		
+		<select id="listSearch" resultType="Board">
+			select*from board
+			<include refid="search"/>
+			limit #{pageStart},#{perPageNum}
+		</select>
+		
+		<select id="searchCount" resultType="int">
+			select count(board_no) from board
+			<include refid="search"/>
+		</select>
 </mapper>

@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.or.dgit.domain.Board;
-import kr.or.dgit.domain.Content;
+
 import kr.or.dgit.domain.Member;
 import kr.or.dgit.persistence.BoardDao;
-import kr.or.dgit.persistence.ContentDao;
+
 import kr.or.dgit.persistence.MemberDao;
 
 @Service

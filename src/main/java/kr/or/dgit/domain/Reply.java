@@ -2,10 +2,10 @@ package kr.or.dgit.domain;
 
 import java.util.Date;
 
-public class reply {
+public class Reply {
 	private int replyNo;
 	private int boardNo;
-	private int memberNo;
+	private String memberId;
 	private String replyContent;
 	private  Date replyStartdate;
 	
@@ -21,11 +21,11 @@ public class reply {
 	public void setBoardNo(int boardNo) {
 		this.boardNo = boardNo;
 	}
-	public int getMemberNo() {
-		return memberNo;
+	public String getMemberId() {
+		return memberId;
 	}
-	public void setMemberNo(int memberNo) {
-		this.memberNo = memberNo;
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
 	}
 	public String getReplyContent() {
 		return replyContent;
@@ -41,7 +41,8 @@ public class reply {
 	}
 	@Override
 	public String toString() {
-		return "reply [replyNo=" + replyNo + ", boardNo=" + boardNo + ", memberNo=" + memberNo + ", replyContent="
+		return "reply [replyNo=" + replyNo + ", boardNo=" + boardNo + ", memberId=" + memberId + ", replyContent="
 				+ replyContent + ", replyStartdate=" + replyStartdate + "]";
 	}
+	
 }

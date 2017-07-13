@@ -7,10 +7,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import kr.or.dgit.domain.Board;
-import kr.or.dgit.domain.Content;
 import kr.or.dgit.domain.Member;
 import kr.or.dgit.persistence.BoardDao;
-import kr.or.dgit.persistence.ContentDao;
 import kr.or.dgit.persistence.MemberDao;
 import kr.or.dgit.service.BoardService;
 
@@ -30,7 +28,7 @@ public class MemberTest {
 		mDao.memberInsert(mb);
 	}
 	
-	//@Test
+	@Test
 	public void selectByNo()throws Exception{
 		mDao.selectByNo("test1");
 	}

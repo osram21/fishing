@@ -29,7 +29,7 @@ create table content(
 CREATE TABLE reply (
 	reply_no        int       NOT null AUTO_increment, -- 댓글 번호
 	board_no        int       NOT NULL, -- 게시물 번호
-	member_no       int       NOT NULL, -- 회원 번호
+	member_id       VARCHAR(50)       NOT NULL, -- 회원 아이디
 	reply_content   VARCHAR(1000) NOT NULL, -- 댓글 내용
 	reply_startdate datetime      NOT null default now(),  -- 댓글일자
 	PRIMARY KEY (reply_no)
@@ -161,3 +161,7 @@ from board d join content c on d.board_no = c.board_no where d.board_no = 1;
 
 select * from board b join content c 
 on b.board_no = c.board_no where b.board_no=1;
+
+insert into board(board_title,member_id)
+(select board_title,member_id from board);
+
