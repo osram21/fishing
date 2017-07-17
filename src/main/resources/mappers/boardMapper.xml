@@ -26,6 +26,15 @@
 			on b.board_no = c.board_no where b.board_no=#{boardNo}
 		</select>
 		
+		<select id="boardReadWithTest" resultType="Board">
+			select * from board where board_no = #{boardNo}
+		</select>
+		
+		<select id="contentReadWithTest" resultType="Board">
+			select * from content where board_no = #{boardNo}
+		</select>
+		
+		
 		<!-- delete -->
 		<delete id="boardDel">
 			delete from board where board_no=#{boardNo}

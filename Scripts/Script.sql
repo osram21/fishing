@@ -165,3 +165,4 @@ on b.board_no = c.board_no where b.board_no=1;
 insert into board(board_title,member_id)
 (select board_title,member_id from board);
 
+select * from reply;

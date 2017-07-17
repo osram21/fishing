@@ -45,7 +45,9 @@ public class BoardController {
 	}
 	@RequestMapping(value="/read",method=RequestMethod.GET)
 	public String read(int boardNo, Model model,@ModelAttribute("cri")SerchCriteria cri)throws Exception{
-		Board b = service.boardRead(boardNo);
+		/*Board b = service.boardRead(boardNo);*/
+		Board b = service.boardReadTest(boardNo);
+		
 		logger.info("===============================read============");
 		model.addAttribute("board",b);
 		return "board/read";

@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +25,7 @@ import kr.or.dgit.service.ReplyService;
 public class ReplyController {
 	@Autowired
 	ReplyService service;
-	
+	private static final Logger logger = LoggerFactory.getLogger(ReplyController.class);
 	
 	/*댓글 리스트*/
 	@RequestMapping(value="/all{boardNo}",method=RequestMethod.GET)
@@ -42,6 +44,7 @@ public class ReplyController {
 	/*댓글 추가*/
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public ResponseEntity<String> add(@RequestBody Reply r){
+		logger.info("===========나오라고==============");
 		ResponseEntity<String> entity = null;
 		
 		try {
@@ -67,11 +70,16 @@ public class ReplyController {
 		return entity;
 	}
 	@RequestMapping(value="/{replyNo}",method=RequestMethod.PUT)
-	public ResponseEntity<String>update(@PathVariable("rno")int replyNo, @RequestBody Reply r){
+	public ResponseEntity<String>update(@PathVariable("replyNo")int replyNo, @RequestBody Reply r){
+		
 		ResponseEntity<String> entity = null;
 		try {
+			logger.info("================컨트롤 왓냐=================");
 			r.setReplyNo(replyNo);
+			/*r.setReplyContent(replyContent);*/
+			
 			service.replyUpdate(r);
+			
 			entity = new ResponseEntity<String>(HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();

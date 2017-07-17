@@ -9,8 +9,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import kr.or.dgit.domain.Board;
+import kr.or.dgit.domain.Reply;
 import kr.or.dgit.persistence.BoardDao;
 import kr.or.dgit.service.BoardService;
+import kr.or.dgit.service.ReplyService;
 
 
 
@@ -21,6 +23,8 @@ public class BoardTest {
 	private BoardService service;
 	@Autowired
 	private BoardDao dao;
+	@Autowired
+	private ReplyService Rservice;
 	
 	//@Test
 	public void insertTest()throws Exception{
@@ -38,5 +42,18 @@ public class BoardTest {
 			System.out.println(b);
 		}*/
 		System.out.println(dao.boardRead(1));
+	}
+	
+	//@Test
+	public void test()throws Exception{
+		service.boardReadTest(1);
+	}
+	
+	@Test
+	public void testReply()throws Exception{
+		Reply r = new Reply();
+		r.setReplyContent("테스트");
+		r.setReplyNo(2);
+		Rservice.replyUpdate(r);
 	}
 }

@@ -41,4 +41,9 @@ public class MemberServiceImpl implements MemberService{
 	public void delete(String memberid) throws Exception {
 		dao.delete(memberid);
 	}
+
+	@Override
+	public Member Login(String memberId, String memberPass) throws Exception {
+		return dao.Login(memberId, memberPass);
+	}
 }

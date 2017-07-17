@@ -1,6 +1,8 @@
 package kr.or.dgit.persistence;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +41,14 @@ public class MemberDaoImpl implements MemberDao{
 	@Override
 	public void delete(String memberid) throws Exception {
 		session.delete(namespace+".memberDel",memberid);
+	}
+
+	@Override
+	public Member Login(String memberId, String memberPass) throws Exception {
+		Map<String, Object> map = new HashMap<>();
+		map.put("memberId", memberId);
+		map.put("memberPass", memberPass);
+		return session.selectOne(namespace+".login",map);
 	}
 
 	

@@ -77,4 +77,12 @@ public class BoardImpl implements BoardDao{
 	public int searchCount(SerchCriteria cri) throws Exception {
 		return session.selectOne(namespace+".searchCount",cri);
 	}
+	@Override
+	public Board boardReadWithTest(int boardNo) throws Exception {
+		return session.selectOne(namespace+".boardReadWithTest",boardNo);
+	}
+	@Override
+	public Board contentReadWithTest(int boardNo) throws Exception {
+		return session.selectOne(namespace+".contentReadWithTest",boardNo);
+	}
 }

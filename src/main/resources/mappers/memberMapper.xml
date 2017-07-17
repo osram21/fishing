@@ -26,4 +26,7 @@
 			delete from member where member_id = #{memberId}
 		</delete>
 		
+		<select id="login" resultType="Member">
+			select * from member where member_id=#{memberId} and member_pass=#{memberPass}
+		</select>
 </mapper>

@@ -3,13 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<%@ include file="../include/header.jsp"%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-</head>
-<body>
+
 			<div>
 				<select name="searchType">
 					<option value="n" ${cri.searchType=='null'? 'selected' : ''}>---</option>
@@ -23,7 +19,7 @@
 					<input type="text" value="${cri.keyword }" name="keyword">
 					<button id="searchBtn">Search</button>
 			</div>
-	<table>
+	<table class="table table-striped">
 		<tr>
 			<th>게시판 번호</th>
 			<th>게시판 제목</th>
@@ -42,8 +38,9 @@
 			</c:forEach>
 	</table>
 	<!-- 페이지 넘기는거 -->
-		<div>
-			<ul>
+		<div class="box-footer">
+			<div class="text-center">
+			<ul class="pagination">
 			<c:if test="${pageMaker.prev }">
 				<li><a href="listPage${pageMaker.makeSearch(pageMaker.startPage-1) }">&laquo;</a></li>
 			</c:if>
@@ -54,6 +51,7 @@
 					<li><a href="listPage${pageMaker.makeSearch(pageMaker.endPage +1)}">&raquo;</a></li>
 			</c:if>
 			</ul>
+			</div>
 		</div>
 	<button onclick="btnNew()">글쓰기</button>
 <script type="text/javascript">
@@ -68,5 +66,4 @@ $(function () {
 		location.href="register";
 	}
 </script>
-</body>
-</html>
+<%@ include file="../include/footer.jsp"%>

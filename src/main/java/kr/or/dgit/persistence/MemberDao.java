@@ -10,4 +10,5 @@ public interface MemberDao {
 	public List<Member> memberList()throws Exception;
 	public void memberUpdate(Member member)throws Exception;
 	public void delete(String memberid)throws Exception;
+	public Member Login(String memberId, String memberPass)throws Exception;
 }

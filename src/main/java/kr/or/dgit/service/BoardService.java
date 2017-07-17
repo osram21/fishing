@@ -23,4 +23,6 @@ public interface BoardService {
 	public int totalCount()throws Exception;
 	public List<Board> listSearch(SerchCriteria cri)throws Exception;
 	public int searchCount(SerchCriteria cri)throws Exception;
+	/*===============================================================*/
+	public Board boardReadTest(int boardNo)throws Exception;
 }

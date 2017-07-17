@@ -25,4 +25,9 @@ public interface BoardDao {
 	public int totalCount()throws Exception;
 	public List<Board> listSearch(SerchCriteria cri)throws Exception;
 	public int searchCount(SerchCriteria cri)throws Exception;
+	
+	/*================================================================*/
+	
+	public Board boardReadWithTest(int boardNo)throws Exception;
+	public Board contentReadWithTest(int boardNo)throws Exception;
 }
