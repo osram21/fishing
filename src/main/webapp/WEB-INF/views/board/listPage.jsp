@@ -5,7 +5,9 @@
 <!DOCTYPE html>
 <%@ include file="../include/header.jsp"%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
+			<div class="box-header">
+					<h3 class="box-title">BOARD LIST(${login })</h3>
+				</div>
 			<div>
 				<select name="searchType">
 					<option value="n" ${cri.searchType=='null'? 'selected' : ''}>---</option>

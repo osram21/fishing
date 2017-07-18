@@ -48,6 +48,7 @@ public class MemberDaoImpl implements MemberDao{
 		Map<String, Object> map = new HashMap<>();
 		map.put("memberId", memberId);
 		map.put("memberPass", memberPass);
+		System.out.println("dao작동되냐"+map);
 		return session.selectOne(namespace+".login",map);
 	}
 

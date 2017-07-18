@@ -3,9 +3,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
@@ -29,21 +31,22 @@
    </beans:bean>
    
    <!-- 인터셉터 로긴할때 써야됨 -->
-    <!-- <beans:bean id="loginInterceptor" class="com.dgit.interceptor.LoginInterceptor"></beans:bean>
-   <beans:bean id="authInterceptor" class="com.dgit.interceptor.AuthInterceptor"></beans:bean>
+   <beans:bean id="loginInterceptor" class="kr.or.dgit.interceptor.LoginInterceptor"></beans:bean>
+   <beans:bean id="authInterceptor" class="kr.or.dgit.interceptor.AuthInterceptor"></beans:bean>
    <interceptors>
    	<interceptor>
    		<mapping path="/user/loginPost"/>
    		<beans:ref bean="loginInterceptor"/>
    	</interceptor>
    	<interceptor>
-   		<mapping path="/sboard/register"/>
-   		<mapping path="/sboard/modify"/>
-   		<mapping path="/sboard/read"/>
-   		<mapping path="/sboard/delete"/>
+   		<mapping path="/board/register"/>
+   		<mapping path="/board/modify"/>
+   		<mapping path="/board/read"/>
+   		<mapping path="/board/delete"/>
+   		<mapping path="/board/listPage"/>
    		<beans:ref bean="authInterceptor"/>
    	</interceptor>
-   </interceptors> -->
+   </interceptors>
 	<context:component-scan base-package="kr.or.dgit.fishing" />
 	
 	

@@ -44,6 +44,7 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public Member Login(String memberId, String memberPass) throws Exception {
+		System.out.println("나왓냐고오"+dao.Login(memberId, memberPass));
 		return dao.Login(memberId, memberPass);
 	}
 }

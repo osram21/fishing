@@ -12,7 +12,7 @@
 			<label>제목</label>
 			<input type="text" name="boardTitle"><br>
 			<label>작성자</label>
-			<input type="text" name="memberId"><br>
+			<input type="text" name="memberId" value="${login }"><br>
 			<label>내용</label>
 			<textarea rows="20" cols="20" name="boardContent"></textarea>
 		</div>

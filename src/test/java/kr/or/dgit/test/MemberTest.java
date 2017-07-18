@@ -28,7 +28,7 @@ public class MemberTest {
 		mDao.memberInsert(mb);
 	}
 	
-	@Test
+	//@Test
 	public void selectByNo()throws Exception{
 		mDao.selectByNo("test1");
 	}
@@ -51,5 +51,10 @@ public class MemberTest {
 	//@Test
 	public void delete()throws Exception{
 		mDao.delete("test1");
+	}
+	
+	@Test
+	public void login()throws Exception{
+		mDao.Login("osram21", "1234");
 	}
 }

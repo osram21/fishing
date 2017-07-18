@@ -166,3 +166,6 @@ insert into board(board_title,member_id)
 (select board_title,member_id from board);
 
 select * from reply;
+select*from member;
+
+select * from member where member_id='osram21' and member_pass='1234';

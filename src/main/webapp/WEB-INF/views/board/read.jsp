@@ -66,7 +66,7 @@ $(function () {
 				</div>
 				<div class="box-body">
 					<label for="newReplyWriter">작성자</label>
-					<input type="text" placeholder="아이디" id="newReplyWriter" class="form-control">
+					<input type="text" placeholder="아이디" id="newReplyWriter" class="form-control" value="${login }">
 					<br>
 					<label for="newReplyText">댓글내용</label>
 					<input type="text" placeholder="Reply Text" id="newReplyText" class="form-control">
