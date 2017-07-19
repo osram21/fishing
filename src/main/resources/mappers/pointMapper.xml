@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.dgit.persistence.PointDao">
+		<!-- point insert -->
+		<insert id="pointInsert">
+			insert into point(member_id,point_where,point_title)values
+			(#{memberId},#{pointWhere},#{pointTitle})
+		</insert>
+		
+		<insert id="contentInsert">
+			insert into pt_content(point_no,point_content)values
+			(LAST_InSERT_ID(),#{pointContent})
+		</insert>
+		
+		<select id="pointList" resultType="Point">
+			select * from point
+		</select>
+</mapper>

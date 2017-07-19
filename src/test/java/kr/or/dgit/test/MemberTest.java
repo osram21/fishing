@@ -1,5 +1,7 @@
 package kr.or.dgit.test;
 
+import java.util.Date;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +35,7 @@ public class MemberTest {
 		mDao.selectByNo("test1");
 	}
 	
-	//@Test
+	@Test
 	public void selectList()throws Exception{
 		mDao.memberList();
 	}
@@ -42,7 +44,7 @@ public class MemberTest {
 	public void update()throws Exception{
 		Member m = new Member();
 		m.setMemberPass("1234");
-		m.setMemberName("테스트3");
+		m.setMemberName("테스트1");
 		m.setMemberEmail("test3@naver.com");
 		m.setMemberId("test1");
 		mDao.memberUpdate(m);
@@ -53,7 +55,7 @@ public class MemberTest {
 		mDao.delete("test1");
 	}
 	
-	@Test
+	//@Test
 	public void login()throws Exception{
 		mDao.Login("osram21", "1234");
 	}

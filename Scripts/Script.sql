@@ -43,11 +43,11 @@ CREATE TABLE upload (
 	upload_date datetime     NOT null default now(),  -- 업로드날짜
 	primary key(upload_no)
 );
-
+drop table point;
 -- 포인트장소
 CREATE TABLE point (
 	point_no      int      NOT null AUTO_increment, -- 포인트 번호
-	member_no     int      not NULL,     -- 회원 번호
+	member_id     VARCHAR(50)      not NULL,     -- 회원 번호
 	point_file    VARCHAR(200) NULL,     -- 사진 파일
 	point_where   VARCHAR(200) NOT NULL, -- 장소 
 	point_title   VARCHAR(100) NOT NULL, -- 글 제목
@@ -55,8 +55,11 @@ CREATE TABLE point (
 	point_hardness double         null, -- 경도
 	point_count   int      default 0, -- 조회수
 	point_date    datetime   not null default now(),      -- 글 날짜
+	point_good int null,
 	PRIMARY KEY (point_no)
 );
+-- 좋아요 컬럼추가
+alter table point add point_good int null default '0';
 
 create table pt_content(
 	point_no int not null,
@@ -168,4 +171,6 @@ insert into board(board_title,member_id)
 select * from reply;
 select*from member;
 
-select * from member where member_id='osram21' and member_pass='1234';
+select * from member where member_id='test' and member_pass='1234';
+
+select * from point;
