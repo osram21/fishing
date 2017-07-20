@@ -14,7 +14,106 @@
 			(LAST_InSERT_ID(),#{pointContent})
 		</insert>
 		
+		<!-- list -->
 		<select id="pointList" resultType="Point">
 			select * from point
+		</select>
+		
+		<select id="ptCntList" resultType="Point">
+			select * from pt_content
+		</select>
+		
+		<!-- read -->
+		<select id="pointRead" resultType="Point">
+			select * from point where point_no = #{pointNo}
+		</select>
+		
+		<select id="pointContentRead" resultType="Point">
+			select * from pt_content where point_no=#{pointNo}
+		</select>
+		
+		<!-- update -->
+		<update id="pointUpdate">
+			update point
+			set point_where = #{pointWhere}
+			where point_no = #{pointNo}
+		</update>
+		<update id="pointContentUpdate">
+			update pt_content
+			set point_content=#{pointContent}
+			where point_no = #{pointNo}
+		</update>
+		
+		<!-- delete -->
+		<delete id="pointDel">
+			delete from point where point_no=#{pointNo}
+		</delete>
+		<delete id="contentDel">
+			delete from pt_content where point_no=#{pointNo}
+		</delete>
+		
+		<select id="listPage" resultType="Point">
+			select*from point
+			limit #{page},10
+		</select>
+		
+		<select id="listConPage" resultType="Point">
+				select*from pt_content
+				limit #{page},10
+		</select>
+		
+		<select id="listCriteria" resultType="Point">
+			select*from point p join pt_content pt on p.point_no = pt.point_no
+			limit #{pageStart},#{perPageNum}
+		</select>
+		
+		<select id="listConCriteria" resultType="Point">
+			select*from pt_content
+			limit #{pageStart},#{perPageNum}
+		</select>
+	
+		<select id="totalCount" resultType="int">
+			select count(point_no) from point
+		</select>
+		
+		<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">
+				where point_title like concat('%',#{keyword},'%')
+			</if>
+			<if test="searchType == 'c'.toString()">
+				where point_content like concat('%',#{keyword},'%')
+			</if>
+			<if test="searchType == 'w'.toString()">
+				where member_id like concat('%',#{keyword},'%')
+			</if>
+			<if test="searchType == 'tc'.toString()">
+				where point_title like concat('%',#{keyword},'%') or point_content like concat('%',#{keyword},'%')
+			</if>
+			<if test="searchType == 'cw'.toString()">
+				where point_content like concat('%',#{keyword},'%') or member_id like concat('%',#{keyword},'%')
+			</if>
+			<if test="searchType == 'tcw'.toString()">
+				where point_title like concat('%',#{keyword},'%') or point_content like concat('%',#{keyword},'%') or
+				member_id like concat('%',#{keyword},'%')
+			</if>
+		</if>
+	</sql>
+	
+		<select id="listSearch" resultType="Point">
+			select*from point p join pt_content pt on p.point_no = pt.point_no
+			<include refid="search"/>
+			limit #{pageStart},#{perPageNum}
+		</select>
+		
+		<select id="listConSearch" resultType="Point">
+			select*from pt_content
+			<include refid="search"/>
+			limit #{pageStart},#{perPageNum}
+		</select>
+		
+		<select id="searchCount" resultType="int">
+			select count(point_no) from point
+			<include refid="search"/>
 		</select>
 </mapper>

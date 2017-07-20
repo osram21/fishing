@@ -24,6 +24,8 @@
 			<form id="f1">
 				<input type="hidden" name="boardNo" value="${board.boardNo }">
 				<input type="hidden" name="list" value="${cri.page }">
+				<input type="hidden" name="searchType" value="${cri.searchType }">
+				<input type="hidden" name="keyword" value="${cri.keyword }">
 			</form>
 <script type="text/javascript">
 $(function () {

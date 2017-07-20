@@ -19,6 +19,7 @@ public interface BoardService {
 	public void boardUpdate(Board board)throws Exception;
 	
 	public void updatecnt(int boardNo) throws Exception;
+	
 	public List<Board> listCriteria(Criteria cri)throws Exception;
 	public int totalCount()throws Exception;
 	public List<Board> listSearch(SerchCriteria cri)throws Exception;

@@ -10,11 +10,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import kr.or.dgit.domain.Board;
 import kr.or.dgit.domain.Reply;
+import kr.or.dgit.domain.SerchCriteria;
 import kr.or.dgit.persistence.BoardDao;
 import kr.or.dgit.service.BoardService;
+import kr.or.dgit.service.PointService;
 import kr.or.dgit.service.ReplyService;
-
-
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/root-context.xml"})
@@ -25,6 +25,8 @@ public class BoardTest {
 	private BoardDao dao;
 	@Autowired
 	private ReplyService Rservice;
+	@Autowired
+	private PointService pService;
 	
 	//@Test
 	public void insertTest()throws Exception{
@@ -35,7 +37,7 @@ public class BoardTest {
 		service.boardInsert(b);
 	}
 	
-	@Test
+	//@Test
 	public void boardSelectWithContent()throws Exception{
 		/*List<Board> list = dao.boardRead(1);
 		for(Board b : list){
@@ -49,11 +51,33 @@ public class BoardTest {
 		service.boardReadTest(1);
 	}
 	
-	@Test
+	//@Test
 	public void testReply()throws Exception{
 		Reply r = new Reply();
 		r.setReplyContent("테스트");
 		r.setReplyNo(2);
 		Rservice.replyUpdate(r);
+	}
+	
+	//@Test
+	public void testPointList()throws Exception{
+		pService.pointList();
+	}
+	
+	/*@Test
+	public void testPointListtwo()throws Exception{
+		SerchCriteria cri = new SerchCriteria();
+		cri.getPageStart();
+		cri.getPerPageNum();
+		cri.getSearchType();
+		pService.listCriteria(cri);
+	}*/
+	//@Test
+	public void testPointListtwo()throws Exception{
+		SerchCriteria cri = new SerchCriteria();
+		cri.getPageStart();
+		cri.getPerPageNum();
+		cri.getSearchType();
+		pService.listCriteria(cri);
 	}
 }

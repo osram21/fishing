@@ -174,3 +174,6 @@ select*from member;
 select * from member where member_id='test' and member_pass='1234';
 
 select * from point;
+select * from pt_content;
+
+select*from point p join pt_content pt on p.point_no = pt.point_no
