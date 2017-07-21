@@ -1,6 +1,8 @@
 package kr.or.dgit.test;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,9 +11,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import kr.or.dgit.domain.Board;
+import kr.or.dgit.domain.PointReply;
 import kr.or.dgit.domain.Reply;
 import kr.or.dgit.domain.SerchCriteria;
 import kr.or.dgit.persistence.BoardDao;
+import kr.or.dgit.persistence.PointReplyDao;
 import kr.or.dgit.service.BoardService;
 import kr.or.dgit.service.PointService;
 import kr.or.dgit.service.ReplyService;
@@ -27,6 +31,8 @@ public class BoardTest {
 	private ReplyService Rservice;
 	@Autowired
 	private PointService pService;
+	@Autowired
+	private PointReplyDao prDao;
 	
 	//@Test
 	public void insertTest()throws Exception{
@@ -79,5 +85,24 @@ public class BoardTest {
 		cri.getPerPageNum();
 		cri.getSearchType();
 		pService.listCriteria(cri);
+	}
+	
+	//@Test
+	public void testProintReplyAvg()throws Exception{
+		System.out.println("시작햇냐====================");
+		PointReply pr = new PointReply();
+		Map<String, Object>map = new HashMap<>();
+		map.put("pointNo", 2);
+		map.put("prF", pr.getPrF());
+		System.out.println(map);
+		prDao.AvgPrf(map);
+	}
+	//@Test
+	public void testProintReplyAvg2()throws Exception{
+		System.out.println("시작햇냐====================");
+		PointReply pr = new PointReply();
+		Map<String, Object>map = new HashMap<>();
+		map.put("pointNo", 2);
+		prDao.AvgPrs(map);
 	}
 }

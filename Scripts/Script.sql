@@ -66,14 +66,14 @@ create table pt_content(
 	point_content text null,
 	primary key(point_no)
 );
-
+drop table point_reply;
 -- 포인트 댓글
 CREATE TABLE point_reply (
 	pr_no      int   NOT null AUTO_increment, -- 포인트댓글번호
-	member_no  int   NOT NULL, -- 회원 번호
+	member_id  varchar(50)   NOT NULL, -- 회원 번호
 	point_no   int   NOT NULL, -- 포인트 번호
-	pr_f       int   NULL,     -- 장소평점
-	pr_s       int   NULL,     -- 어류평점
+	pr_f       double   NULL,     -- 장소평점
+	pr_s       double   NULL,     -- 어류평점
 	pr_content TEXT      NULL,     -- 댓글 내용
 	pr_date    TIMESTAMP not null default now(),  -- 댓글 일자
 	primary key(pr_no)
@@ -175,5 +175,31 @@ select * from member where member_id='test' and member_pass='1234';
 
 select * from point;
 select * from pt_content;
+select * from point_reply;
 
 select*from point p join pt_content pt on p.point_no = pt.point_no
+
+insert into point_reply(member_id,point_no,pr_f,pr_s,pr_content)values
+("ㅇㅇ",1,0.5,0.5,"dd");
+
+insert into point_reply(member_id,point_no,pr_f,pr_s,pr_content)values
+("test2",2,1.5,1.5,"dd"),
+("test1",2,0.5,0.5,"dd"),
+("test4",2,2.5,3.5,"dd"),
+("test2",2,4.5,5.0,"dd"),
+("test5",2,1.5,2.5,"dd");
+
+insert into point_reply(member_id,point_no,pr_f,pr_s,pr_content)values
+("test2",3,1.5,1.5,"dd"),
+("test1",3,0.5,0.5,"dd"),
+("test4",3,2.5,3.5,"dd"),
+("test2",3,4.5,5.0,"dd"),
+("test5",3,1.5,2.5,"dd");
+
+
+select point_no, round(avg(pr_f),1)from point_reply 
+	where point_no=2 
+	group by point_no;
+select round(avg(pr_s),1)from point_reply 
+	where point_no=2
+group by point_no;

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.dgit.persistence.PointReplyDao">
+		<select id="replyList" resultType="PointReply">
+	 		select*from point_reply
+		</select>
+		<insert id="replyInsert">
+			insert into point_reply(member_id,point_no,pr_f,pr_s,pr_content)
+			values (#{memberId},#{pointNo},#{prF},#{prS},#{prContent})
+		</insert>
+		<update id="replyUpdate">
+			update point_reply 
+			set pr_content = #{prContent}
+			where pr_no = #{prNo}
+		</update>
+		<delete id="replyDel">
+			delete from reply where pr_no = #{prNo}
+		</delete>
+	
+	<select id="listPage" resultType="PointReply">
+		select*from point_reply where point_no=#{pointNo}
+		limit #{cri.pageStart},#{cri.perPageNum}
+	</select>
+	
+	<select id="count" resultType="int">
+		select count(board_no) from point_reply where point_no = #{pointNo}
+	</select>
+	
+	<select id="AvgPrf" resultType="java.util.HashMap">
+		select point_no, round(avg(pr_f),1)from point_reply 
+		where point_no=#{pointNo}
+		group by point_no
+	</select>
+	
+	<select id="AvgPrs" resultType="java.util.HashMap">
+		select point_no, round(avg(pr_s),1)from point_reply 
+		where point_no=#{pointNo}
+		group by point_no
+	</select>
+</mapper>
