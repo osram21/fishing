@@ -1,18 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<!DOCTYPE html>
-		<div>
-			<label>제목:${point.pointTitle }</label><br>
-			<label>작성자:${point.memberId }</label><br>
-			<label>내용:${point.pointContent }</label>
-		</div>
+<%@ include file="../include/header.jsp"%>
+
+<link href="${pageContext.request.contextPath}/resources/bootpage/css/main.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/bootpage/css/star-rating.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/bootpage/js/star-rating.min.js" type="text/javascript"></script>
+		<div class="panel panel-default arrow left">
+				<div class="panel-body">
+			<p class="text-danger">제목:${point.pointTitle }</p>
+			<p class="text-danger">작성자:${point.memberId }</p>
+			<p class="text-danger">내용:${point.pointContent }</p>
+		
 		<button id="modify">수정하기</button>
 		<button id="delete">삭제하기</button>
 		<button id="list">리스트가기</button>
 		<form id="f1">
 			<input type="hidden" name="pointNo" value="${point.pointNo }">
 		</form>
+		</div>
+		</div>
 <script type="text/javascript">
 $(function () {
 	$("#modify").click(function(){

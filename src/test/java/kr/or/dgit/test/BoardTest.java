@@ -11,6 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import kr.or.dgit.domain.Board;
+import kr.or.dgit.domain.Point;
 import kr.or.dgit.domain.PointReply;
 import kr.or.dgit.domain.Reply;
 import kr.or.dgit.domain.SerchCriteria;
@@ -65,7 +66,7 @@ public class BoardTest {
 		Rservice.replyUpdate(r);
 	}
 	
-	//@Test
+	@Test
 	public void testPointList()throws Exception{
 		pService.pointList();
 	}
@@ -104,5 +105,16 @@ public class BoardTest {
 		Map<String, Object>map = new HashMap<>();
 		map.put("pointNo", 2);
 		prDao.AvgPrs(map);
+	}
+	
+	//@Test
+	public void testInsert()throws Exception{
+		Point p = new Point();
+		p.setMemberId("dd");
+		p.setPointWhere("여기");
+		p.setPointTitle("타이틀");
+		p.setPointContent("dd");
+		pService.pointInsert(p);
+		
 	}
 }

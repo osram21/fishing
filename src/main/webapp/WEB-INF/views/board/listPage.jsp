@@ -5,6 +5,18 @@
 <!DOCTYPE html>
 <%@ include file="../include/header.jsp"%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<style>
+	.panel{
+		width: 80%;
+		margin: 0 auto;	
+	}
+	.container{
+		margin-top: 20px;
+	}
+	
+</style>
+			<div class="panel panel-default arrow left">
+				<div class="panel-body">
 			<div class="box-header">
 					<h3 class="box-title">BOARD LIST(${login })</h3>
 				</div>
@@ -21,7 +33,7 @@
 					<input type="text" value="${cri.keyword }" name="keyword">
 					<button id="searchBtn">Search</button>
 			</div>
-	<table class="table table-striped">
+	<table class="table table-condensed">
 		<tr>
 			<th>게시판 번호</th>
 			<th>게시판 제목</th>
@@ -39,6 +51,7 @@
 			</tr>
 			</c:forEach>
 	</table>
+	
 	<!-- 페이지 넘기는거 -->
 		<div class="box-footer">
 			<div class="text-center">
@@ -56,6 +69,8 @@
 			</div>
 		</div>
 	<button onclick="btnNew()">글쓰기</button>
+</div>
+	</div>
 <script type="text/javascript">
 $(function () {
 	$("#searchBtn").click(function() {

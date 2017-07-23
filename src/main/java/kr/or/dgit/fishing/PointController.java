@@ -28,12 +28,15 @@ public class PointController {
 	
 	@RequestMapping(value="/insert",method=RequestMethod.GET)
 	public String insertGet()throws Exception{
+		logger.info("왓냐=========================");
 		return "point/insert";
 	}
 	
 	@RequestMapping(value="/insert",method=RequestMethod.POST)
 	public String insertPost(Point p)throws Exception{
+		logger.info("post옴??=========================");
 		service.pointInsert(p);
+		logger.info("들어갓냐======================="+p);
 		return"redirect:listPage";
 	}
 	@RequestMapping(value="/listPage",method=RequestMethod.GET)

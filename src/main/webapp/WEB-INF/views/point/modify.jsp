@@ -14,6 +14,7 @@
 			<textarea rows="20" cols="20" name="pointContent">${point.pointContent }</textarea>
 		</div>
 		<button onclick="btnNew()">수정</button>
+</form>
 <script type="text/javascript">
 	function btnNew(){
 		location.href="read";

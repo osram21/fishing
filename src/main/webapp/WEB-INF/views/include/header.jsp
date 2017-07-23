@@ -29,8 +29,8 @@
 
 </head>
 <body>
-	
-	<div class="brand">홈페잊</div>
+
+    <div class="brand">Business Casual</div>
     <div class="address-bar">3481 Melrose Place | Beverly Hills, CA 90210 | 123.456.7890</div>
 
     <!-- Navigation -->
@@ -45,13 +45,13 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-                <a class="navbar-brand" href="index.html">Fishing</a>
+                <a class="navbar-brand" href="index.html">Business Casual</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="${pageContext.request.contextPath }/point/listPage">Home</a>
                     </li>
                     <li>
                         <a href="about.html">About</a>
@@ -60,7 +60,7 @@
                         <a href="blog.html">Blog</a>
                     </li>
                     <li>
-                        <a href="contact.html">Contact</a>
+                        <a href="${pageContext.request.contextPath }/board/listPage">Contact</a>
                     </li>
                 </ul>
             </div>

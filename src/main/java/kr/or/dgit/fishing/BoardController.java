@@ -59,7 +59,7 @@ public class BoardController {
 		model.addAttribute("page",cri.getPage());
 		model.addAttribute("searcgType",cri.getSearchType());
 		model.addAttribute("keyword",cri.getKeyword());
-		return"redirect:listAll";
+		return"redirect:listPage";
 	}
 	@RequestMapping(value="/modify",method=RequestMethod.GET)
 	public String updateGet(int boardNo,Model model,@ModelAttribute("cri")SerchCriteria cri)throws Exception{
