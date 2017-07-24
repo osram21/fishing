@@ -5,13 +5,14 @@
 <!DOCTYPE html>
 <%@ include file="../include/header.jsp"%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
 <style>
 	.panel{
 		width: 80%;
 		margin: 0 auto;	
 	}
-	.container{
-		margin-top: 20px;
+	footer {
+		margin-top: 20px; 
 	}
 	
 </style>

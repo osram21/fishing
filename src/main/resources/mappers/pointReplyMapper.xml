@@ -25,7 +25,7 @@
 	</select>
 	
 	<select id="count" resultType="int">
-		select count(board_no) from point_reply where point_no = #{pointNo}
+		select count(point_no) from point_reply where point_no = #{pointNo}
 	</select>
 	
 	<select id="AvgPrf" resultType="java.util.HashMap">

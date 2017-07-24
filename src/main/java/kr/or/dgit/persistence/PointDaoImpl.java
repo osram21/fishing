@@ -76,8 +76,8 @@ public class PointDaoImpl implements PointDao{
 	}
 
 	@Override
-	public void updatecnt(int pointNo) throws Exception {
-		session.selectOne(namespace+".updatecnt",pointNo);
+	public void updateCnt(int pointNo) throws Exception {
+		session.update(namespace+".updateCnt",pointNo);
 	}
 
 	@Override
@@ -118,5 +118,10 @@ public class PointDaoImpl implements PointDao{
 	public List<Point> listConSearch(SerchCriteria cri) throws Exception {
 		return session.selectList(namespace+".listConSearch",cri);
 	}
+
+	/*@Override
+	public void updateCnt(int pointNo) throws Exception {
+		session.update(namespace+".updateCnt",pointNo);
+	}*/
 
 }

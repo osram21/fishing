@@ -18,9 +18,11 @@ public interface PointService {
 	
 	public void pointDel(int pointNo)throws Exception;
 	
-	public void updatecnt(int pointNo) throws Exception;
+	public void updateCnt(int pointNo) throws Exception;
 	public List<Point> listCriteria(Criteria cri)throws Exception;
 	public int totalCount()throws Exception;
 	public List<Point> listSearch(SerchCriteria cri)throws Exception;
 	public int searchCount(SerchCriteria cri)throws Exception;
+	
+	/*public void updateCnt(int pointNo)throws Exception;*/
 }

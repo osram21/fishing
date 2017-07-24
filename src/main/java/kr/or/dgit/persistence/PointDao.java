@@ -25,7 +25,7 @@ public interface PointDao {
 	public List<Point> listPage(int page)throws Exception;
 	public List<Point> listConPage(int page)throws Exception;
 	
-	public void updatecnt(int pointNo) throws Exception;
+	public void updateCnt(int pointNo) throws Exception;
 	
 	public List<Point> listCriteria(Criteria cri)throws Exception;
 	public List<Point> listConCriteria(Criteria cri)throws Exception;
@@ -36,4 +36,5 @@ public interface PointDao {
 	public List<Point> listConSearch(SerchCriteria cri)throws Exception;
 	
 	public int searchCount(SerchCriteria cri)throws Exception;
+	/*public void updateCnt(int pointNo)throws Exception;*/
 }

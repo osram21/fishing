@@ -1,11 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%> 
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@page session="false" %>
 <!DOCTYPE html>
 <%@ include file="../include/header.jsp"%>
-<%-- <link href="${pageContext.request.contextPath}/resources/bootpage/css/main.css" rel="stylesheet"> --%>
+<%-- <link href="${pageContext.request.contextPath}/resources/bootpage/css/main.css" rel="stylesheet">  --%>
 <link href="${pageContext.request.contextPath}/resources/bootpage/css/star-rating.min.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/bootpage/js/star-rating.min.js" type="text/javascript"></script>
@@ -26,6 +25,12 @@
 #btn {
 	float: right;
 }
+ #content > p{
+ 	width:600px;
+ 	text-overflow:ellipsis;
+ 	white-space: nowrap;
+ 	overflow: hidden;
+ }
 </style>
 
 <div class="container">
@@ -66,7 +71,7 @@
 									<div class="comment-user">
 										<i class="fa fa-user">${point.memberId }</i>
 									</div>
-										<time class="comment-date" datetime=""><i class="fa fa-clock-o"></i><%-- <fmt:formatDate value="${point.pointDate }"pattern="yyyy-MM-dd HH:mm" /> --%>
+							<time class="comment-date" ><i class="fa fa-clock-o"></i><fmt:formatDate value="${point.pointDate }" pattern="yyyy-MM-dd HH:mm"/> 
 										</time>
 								</header>
 				<div class="comment-post">
@@ -82,11 +87,11 @@
 				<div class="row">
 					<div class="col-sm-4" id="form1">
 						<label for="input-7-xs" class="control-label">장소 평점</label> 
-						<input id="input-3" name="input-3" value="1.2" class="rating-loading">
+						 <input id="input-3" name="input-3" value="4" class="rating-loading">
 					</div>
 					<div class="col-sm-4" id="form2">
 						<label for="input-7-xs" class="control-label">어류 평점</label> 
-						<input id="input-4" name="input-3" value="1" class="rating-loading">
+						<input id="input-4" name="input-4" value="1" class="rating-loading">
 					</div>
 				</div>
 				<p class="text-right">
@@ -121,6 +126,10 @@
 	</div>
 </div>
 <script type="text/javascript">
+$(document).on('ready', function(){
+    $('#input-3').rating({displayOnly: true, step: 0.5});
+    $('#input-4').rating({displayOnly: true, step: 0.5});
+});
 $(function() {
 	$("#searchBtn").click(
 		function() {
@@ -133,10 +142,7 @@ $(function() {
 function btnNew() {
 	location.href = "insert";
 }
-$(document).on('ready', function(){
-    $('#input-3').rating({displayOnly: true, step: 0.2});
-    $('#input-4').rating({displayOnly: true, step: 0.5});
-});
+
 </script>
 
 <%@ include file="../include/footer.jsp"%>

@@ -52,6 +52,12 @@
 			delete from pt_content where point_no=#{pointNo}
 		</delete>
 		
+		<update id="updateCnt">
+			update point
+			set point_count = point_count+1 
+			where point_no=#{pointNo}
+		</update>
+		
 		<select id="listPage" resultType="Point">
 			select*from point
 			limit #{page},10

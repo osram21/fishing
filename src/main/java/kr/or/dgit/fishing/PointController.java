@@ -51,8 +51,12 @@ public class PointController {
 		return "point/listPage";
 	}
 	@RequestMapping(value="/read",method=RequestMethod.GET)
-	public String read(int pointNo,Model model,@ModelAttribute("cri")SerchCriteria cri)throws Exception{
+	public String read(int pointNo,Model model,@ModelAttribute("cri")SerchCriteria cri,boolean isModify)throws Exception{
 		Point p = service.pointByno(pointNo);
+		if(isModify == false){
+			service.updateCnt(pointNo);
+		}
+		/*p.setPointCount(p.getPointCount()+1);*/
 		model.addAttribute("point",p);
 		return "point/read";
 	}

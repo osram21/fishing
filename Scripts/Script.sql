@@ -203,3 +203,8 @@ select point_no, round(avg(pr_f),1)from point_reply
 select round(avg(pr_s),1)from point_reply 
 	where point_no=2
 group by point_no;
+
+
+update point
+set point_count = point_count+1 
+where point_no=2;

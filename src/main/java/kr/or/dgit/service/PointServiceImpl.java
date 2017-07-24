@@ -58,8 +58,8 @@ public class PointServiceImpl implements PointService{
 	}
 
 	@Override
-	public void updatecnt(int pointNo) throws Exception {
-		dao.updatecnt(pointNo);
+	public void updateCnt(int pointNo) throws Exception {
+		dao.updateCnt(pointNo);
 	}
 	
 	
@@ -94,4 +94,9 @@ public class PointServiceImpl implements PointService{
 	public int searchCount(SerchCriteria cri) throws Exception {
 		return dao.searchCount(cri);
 	}
+
+	/*@Override
+	public void updateCnt(int pointNo) throws Exception {
+		dao.updatecnt(pointNo);
+	}*/
 }
