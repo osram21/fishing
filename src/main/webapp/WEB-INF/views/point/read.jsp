@@ -52,11 +52,12 @@
 				<div class="row">
 					<div class="col-sm-4" id="form1">
 						<label for="input-4" class="control-label">장소 평점</label>
-						<input id="input-4" name="input-4" class="rating rating-loading" data-show-clear="false" data-show-caption="true">
+						<input name="inpit-4" value="${pr.prF }" id="prF"class="rating rating-loading" data-show-clear="false" data-show-caption="true">
+						
 					</div>
 					<div class="col-sm-4" id="form2">
 						<label for="input-4" class="control-label">어류 평점</label> 
-						<input id="input-4" name="input-4" class="rating rating-loading" data-show-clear="false" data-show-caption="true">
+						<input name="input-4" value="${pr.prS }" id="prS" class="rating rating-loading" data-show-clear="false" data-show-caption="true">
 					</div>
 				</div>
 				<div class="box-footer">
@@ -70,9 +71,9 @@
 				</li>
 			</ul> 
 		</div>
+			</div>
 				</div>
-				</div>
-				</div>
+			</div>
 </section>
 	</div>
 		</div>
@@ -116,8 +117,7 @@
 				</div>
 		</div>
 	</li>
-		{{/list}}
-		
+		{{/list}}		
 	</script>
 <script type="text/javascript">
 $(function () {
@@ -165,7 +165,9 @@ $(function () {
 	$("#btnadd").click(function(){//추가 버튼 눌럿을때
 		var writer = $("#newReplyWriter").val(); //태그 작성자 가져오기
 		var text = $("#newReplyText").val();	// 태그 내용(댓글쓴 글) 가져오기
-		var sendData = {pointNo:bno,prContent:text,memberId:writer};//데이터 보내는거
+		var prF = $("#prF").val();
+		var prS = $("#prS").val();
+		var sendData = {pointNo:bno,prContent:text,memberId:writer,prF:prF,prS:prS};//데이터 보내는거
 		
 		$.ajax({
 			url:"${pageContext.request.contextPath}/ptreply/add",
@@ -179,11 +181,63 @@ $(function () {
 			}
 		})
 	})
+	
+	$(document).on('rating.change',"#prF", function(event, value, caption) {
+	    console.log(value);
+	    console.log(caption);
+	});	
+	
 	//리스트
 	$("#btnList").click(function(){
 		getAllList(page_bar);
-			
-		});
+	});
+	
+	//수정 버튼
+	$(document).on("click",".btn-primary",function(){
+		var rno = $(this).attr("data-rno");
+		var replyContent = $(this).attr("data-text");
+		var memberId = $(this).attr("data-replyer");
+		$(".modal-title").html(rno);
+		$("#replytext").val(replyContent);
+		$("#modifyModal").show();
+	})
+	
+	// 모달 수정 버튼 누르면!!!
+	$("#replyModBtn").click(function(){
+		var ptNo = $(".modal-title").text();
+		var ptcontent = $("#replytext").val();
+		var sendData = {replyContent:replycontent};
+		
+		$.ajax({
+			url:"${pageContext.request.contextPath}/ptreply/"+ptNo,
+			type:"put",
+			dataType:"text",
+			data:JSON.stringify(sendData),
+			headers:{"Content-Type":"application/json"},
+			success:function(data){
+				console.log(data);
+				getAllList(page_bar);
+			}
+		})
+	})
+	
+	//삭제
+	$(document).on("click",".btndel",function(){
+		var replyNo = $(this).attr("data-rno");
+		
+		$.ajax({
+			url:"${pageContext.request.contextPath}/ptreply/"+replyNo,
+			type:"delete",
+			success:function(data){
+				if(data=="success"){
+					alert("삭제");
+				}
+				getAllList(page_bar);
+			}
+		})
+	})
+	
+	//평점 에이잭스를 해봐야되는곳
 	
 </script>
 <%@ include file="../include/footer.jsp"%>

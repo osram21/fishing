@@ -35,6 +35,7 @@ public class BoardTest {
 	@Autowired
 	private PointReplyDao prDao;
 	
+	
 	//@Test
 	public void insertTest()throws Exception{
 		Board b = new Board();
@@ -88,15 +89,9 @@ public class BoardTest {
 		pService.listCriteria(cri);
 	}
 	
-	//@Test
+	@Test
 	public void testProintReplyAvg()throws Exception{
-		System.out.println("시작햇냐====================");
-		PointReply pr = new PointReply();
-		Map<String, Object>map = new HashMap<>();
-		map.put("pointNo", 2);
-		map.put("prF", pr.getPrF());
-		System.out.println(map);
-		prDao.AvgPrf(map);
+		prDao.AvgPrf(3);
 	}
 	//@Test
 	public void testProintReplyAvg2()throws Exception{

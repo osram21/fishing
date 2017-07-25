@@ -46,14 +46,15 @@ public class PointReplyServiceImpl implements PointReplyService{
 		return dao.count(pointNo);
 	}
 
-	@Override
+	/*@Override
 	public List<PointReply> AvgPrf(Map<String, Object>map) throws Exception {
-		return dao.AvgPrf(map);
+		
+		return "";
 	}
 
 	@Override
 	public List<PointReply> AvgPrs(Map<String, Object>map) throws Exception {
 		return dao.AvgPrs(map);
-	}
+	}*/
 
 }

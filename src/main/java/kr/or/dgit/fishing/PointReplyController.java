@@ -44,7 +44,7 @@ public class PointReplyController {
 	}
 	
 	/*평점 평균 오는거??*/
-	@RequestMapping(value="/all/{pointNo}/{prF}",method=RequestMethod.GET)
+	/*@RequestMapping(value="/all/{pointNo}/{prF}",method=RequestMethod.GET)
 	public ResponseEntity<List<PointReply>>AvgPrf(@PathVariable("prF")double prF,@PathVariable("pointNo")int pointNo)throws Exception{
 		ResponseEntity<List<PointReply>> entity = null;
 		try {
@@ -73,7 +73,7 @@ public class PointReplyController {
 			entity = new ResponseEntity<List<PointReply>>(HttpStatus.BAD_REQUEST);
 		}
 		return entity;
-	}
+	}*/
 	
 	/*댓글 추가*/
 	@RequestMapping(value="/add",method=RequestMethod.POST)

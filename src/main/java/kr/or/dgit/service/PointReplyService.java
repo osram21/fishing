@@ -17,6 +17,6 @@ public interface PointReplyService {
 	public List<PointReply>listPage(int pointNo, Criteria cri)throws Exception;
 	public int count(int pointNo)throws Exception;
 	
-	public List<PointReply>AvgPrf(Map<String, Object>map)throws Exception;
-	public List<PointReply>AvgPrs(Map<String, Object>map)throws Exception;
+	/*public List<PointReply>AvgPrf(Map<String, Object>map)throws Exception;
+	public List<PointReply>AvgPrs(Map<String, Object>map)throws Exception;*/
 }

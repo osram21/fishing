@@ -31,6 +31,9 @@
  	white-space: nowrap;
  	overflow: hidden;
  }
+ /* footer{
+ 	position: 
+ } */
 </style>
 
 <div class="container">
@@ -86,12 +89,12 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-4" id="form1">
-						<label for="input-7-xs" class="control-label">장소 평점</label> 
-						 <input id="input-3" name="input-3" value="4" class="rating-loading">
+						<label for="input-2" class="control-label">장소 평점</label> 
+						 <input  name="input-2" class="rating-loading input-2" value="${pr.prS }">
 					</div>
 					<div class="col-sm-4" id="form2">
 						<label for="input-7-xs" class="control-label">어류 평점</label> 
-						<input id="input-4" name="input-4" value="1" class="rating-loading">
+						<input name="input-4" class="rating-loading input-4"value="${pr.prS }">
 					</div>
 				</div>
 				<p class="text-right">
@@ -125,11 +128,16 @@
 		</div>
 	</div>
 </div>
+
 <script type="text/javascript">
-$(document).on('ready', function(){
-    $('#input-3').rating({displayOnly: true, step: 0.5});
-    $('#input-4').rating({displayOnly: true, step: 0.5});
-});
+	$(function() {
+		   $(".input-2").rating({displayOnly: true, step: 0.1});
+		    console.log(".input-2");
+		   $('.input-4').rating({displayOnly: true, step: 0.1});
+	})
+</script>
+<script type="text/javascript">
+
 $(function() {
 	$("#searchBtn").click(
 		function() {
@@ -142,7 +150,6 @@ $(function() {
 function btnNew() {
 	location.href = "insert";
 }
-
 </script>
 
 <%@ include file="../include/footer.jsp"%>

@@ -17,6 +17,6 @@ public interface PointReplyDao {
 	public int count(int pointNo)throws Exception;
 	
 	/*평점 맞는지 모르겟음 일딴 쳐넣어봄*/
-	public List<PointReply>AvgPrf(Map<String, Object>map)throws Exception;
+	public List<PointReply>AvgPrf(int pointNo)throws Exception;
 	public List<PointReply>AvgPrs(Map<String, Object>map)throws Exception;
 }

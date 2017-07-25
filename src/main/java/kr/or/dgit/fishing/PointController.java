@@ -1,6 +1,8 @@
 package kr.or.dgit.fishing;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kr.or.dgit.domain.Board;
 import kr.or.dgit.domain.PageMaker;
 import kr.or.dgit.domain.Point;
+import kr.or.dgit.domain.PointReply;
 import kr.or.dgit.domain.SerchCriteria;
 import kr.or.dgit.service.PointService;
 
@@ -26,27 +29,28 @@ public class PointController {
 	@Autowired
 	private PointService service;
 	
+	@Autowired
+	private PointReplyController prService;
+	
 	@RequestMapping(value="/insert",method=RequestMethod.GET)
 	public String insertGet()throws Exception{
-		logger.info("왓냐=========================");
 		return "point/insert";
 	}
 	
 	@RequestMapping(value="/insert",method=RequestMethod.POST)
 	public String insertPost(Point p)throws Exception{
-		logger.info("post옴??=========================");
 		service.pointInsert(p);
-		logger.info("들어갓냐======================="+p);
 		return"redirect:listPage";
 	}
 	@RequestMapping(value="/listPage",method=RequestMethod.GET)
-	public String listAll(Model model,@ModelAttribute("cri")SerchCriteria cri)throws Exception{
+	public String listAll(Model model,@ModelAttribute("cri")SerchCriteria cri,Map<String, Object>map)throws Exception{
 		model.addAttribute("list",service.listSearch(cri));
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(service.searchCount(cri));
 		model.addAttribute("pageMaker",pageMaker);
+		
 		
 		return "point/listPage";
 	}
