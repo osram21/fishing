@@ -122,4 +122,16 @@
 			select count(point_no) from point
 			<include refid="search"/>
 		</select>
+		<!-- 평균 -->
+		<update id="pointPrfavg">
+			update point
+			set prfavg = #{prfavg}
+			where point_no = #{pointNo}
+		</update>
+		
+		<update id="pointPrsavg">
+			update point
+			set prsavg = #{prsavg}
+			where point_no = #{pointNo}
+		</update>
 </mapper>

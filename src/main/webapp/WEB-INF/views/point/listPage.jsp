@@ -10,9 +10,9 @@
 <script src="${pageContext.request.contextPath}/resources/bootpage/js/star-rating.min.js" type="text/javascript"></script>
 
 <style>
- .row {
+.row { 
 	padding: 10px;
-} 
+}  
 
 .btn-default {
 	float: rigth;
@@ -31,9 +31,9 @@
  	white-space: nowrap;
  	overflow: hidden;
  }
- /* footer{
- 	position: 
- } */
+ #footer_row{
+		padding: 0px;
+	}
 </style>
 
 <div class="container">
@@ -90,16 +90,15 @@
 				<div class="row">
 					<div class="col-sm-4" id="form1">
 						<label for="input-2" class="control-label">장소 평점</label> 
-						 <input  name="input-2" class="rating-loading input-2" value="${pr.prS }">
+						 <input name="prfavg" class="rating-loading input-2" value="${point.prfavg }" data-min="0" data-max="5" data-step="0.1">
 					</div>
 					<div class="col-sm-4" id="form2">
 						<label for="input-7-xs" class="control-label">어류 평점</label> 
-						<input name="input-4" class="rating-loading input-4"value="${pr.prS }">
+						<input name="prsavg" class="rating-loading input-4"value="${point.prfavg }">
 					</div>
-				</div>
-				<p class="text-right">
-					<a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a>
-				</p>
+					<!-- 히든 -->
+					<input type="hidden" name="pointNo" value="${point.pointNo }">
+				</div> 
 			</div>
 		</div>
 	</div>

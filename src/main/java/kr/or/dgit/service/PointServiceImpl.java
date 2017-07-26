@@ -11,10 +11,14 @@ import kr.or.dgit.domain.Criteria;
 import kr.or.dgit.domain.Point;
 import kr.or.dgit.domain.SerchCriteria;
 import kr.or.dgit.persistence.PointDao;
+import kr.or.dgit.persistence.PointReplyDao;
 @Service
 public class PointServiceImpl implements PointService{
 	@Autowired
 	private PointDao dao;
+	
+	@Autowired
+	PointReplyDao prDao;
 	
 	@Transactional
 	@Override

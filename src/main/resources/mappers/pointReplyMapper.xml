@@ -29,15 +29,15 @@
 		select count(point_no) from point_reply where point_no = #{pointNo}
 	</select>
 	
-	<select id="AvgPrf" resultType="PointReply">
-		select point_no, round(avg(pr_f),1)from point_reply 
-		where point_no=#{pointNo}
+	<select id="AvgPrf" resultType="double">
+		select round(avg(pr_f),1) from point_reply
+		where point_no = #{pointNO} 
 		group by point_no
 	</select>
 	
-	<select id="AvgPrs" resultType="java.util.HashMap">
-		select point_no, round(avg(pr_s),1)from point_reply 
-		where point_no=#{pointNo}
+	<select id="AvgPrs" resultType="double">
+		select round(avg(pr_s),1)from point_reply 
+		where point_no = #{pointNO}
 		group by point_no
 	</select>
 </mapper>

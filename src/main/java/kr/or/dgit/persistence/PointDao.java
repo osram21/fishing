@@ -37,4 +37,9 @@ public interface PointDao {
 	
 	public int searchCount(SerchCriteria cri)throws Exception;
 	/*public void updateCnt(int pointNo)throws Exception;*/
+	
+	/*평균 함수*/
+	public void pointPrfavg(Point p)throws Exception;
+	public void pointPrsavg(Point p)throws Exception;
+	
 }

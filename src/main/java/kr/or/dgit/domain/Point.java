@@ -14,7 +14,8 @@ public class Point {
 	private Date pointDate;
 	private int pointGood;
 	private String pointContent;
-	
+	private double prfavg;
+	private double prsavg;
 	
 	public String getPointContent() {
 		return pointContent;
@@ -76,11 +77,25 @@ public class Point {
 	public void setPointGood(int pointGood) {
 		this.pointGood = pointGood;
 	}
+	
+	public double getPrfavg() {
+		return prfavg;
+	}
+	public void setPrfavg(double prfavg) {
+		this.prfavg = prfavg;
+	}
+	public double getPrsavg() {
+		return prsavg;
+	}
+	public void setPrsavg(double prsavg) {
+		this.prsavg = prsavg;
+	}
 	@Override
 	public String toString() {
 		return "Point [pointNo=" + pointNo + ", memberId=" + memberId + ", pointWhere=" + pointWhere + ", pointTitle="
 				+ pointTitle + ", pointLatiude=" + pointLatiude + ", pointHardness=" + pointHardness + ", pointCount="
 				+ pointCount + ", pointDate=" + pointDate + ", pointGood=" + pointGood + ", pointContent="
-				+ pointContent + "]";
+				+ pointContent + ", prfavg=" + prfavg + ", prsavg=" + prsavg + "]";
 	}
+	
 }

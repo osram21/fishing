@@ -1,6 +1,8 @@
 package kr.or.dgit.persistence;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -117,6 +119,16 @@ public class PointDaoImpl implements PointDao{
 	@Override
 	public List<Point> listConSearch(SerchCriteria cri) throws Exception {
 		return session.selectList(namespace+".listConSearch",cri);
+	}
+
+	@Override
+	public void pointPrfavg(Point p) throws Exception {
+		session.update(namespace+".pointPrfavg",p);
+	}
+
+	@Override
+	public void pointPrsavg(Point p) throws Exception {
+		session.update(namespace+".pointPrsavg",p);
 	}
 
 	/*@Override

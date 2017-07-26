@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import kr.or.dgit.domain.Board;
 import kr.or.dgit.domain.PageMaker;
 import kr.or.dgit.domain.Point;
 import kr.or.dgit.domain.PointReply;
 import kr.or.dgit.domain.SerchCriteria;
+import kr.or.dgit.service.PointReplyService;
 import kr.or.dgit.service.PointService;
 
 @Controller
@@ -30,7 +30,7 @@ public class PointController {
 	private PointService service;
 	
 	@Autowired
-	private PointReplyController prService;
+	private PointReplyService prService;
 	
 	@RequestMapping(value="/insert",method=RequestMethod.GET)
 	public String insertGet()throws Exception{
@@ -43,15 +43,21 @@ public class PointController {
 		return"redirect:listPage";
 	}
 	@RequestMapping(value="/listPage",method=RequestMethod.GET)
-	public String listAll(Model model,@ModelAttribute("cri")SerchCriteria cri,Map<String, Object>map)throws Exception{
-		model.addAttribute("list",service.listSearch(cri));
+	public String listAll(Model model,@ModelAttribute("cri")SerchCriteria cri,Point p)throws Exception{
+		List<Point> list= service.listSearch(cri);
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(service.searchCount(cri));
 		model.addAttribute("pageMaker",pageMaker);
 		
+		/*for(int i=0; i<list.size();i++){
+			double avg = prService.AvgPrf(list.get(i).getPointNo());
+			list.get(i).setAvg(avg);
+		}*/
+		model.addAttribute("list",list);
 		
+		model.addAttribute("pr",list);
 		return "point/listPage";
 	}
 	@RequestMapping(value="/read",method=RequestMethod.GET)

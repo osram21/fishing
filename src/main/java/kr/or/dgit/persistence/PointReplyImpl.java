@@ -51,13 +51,13 @@ public class PointReplyImpl implements PointReplyDao{
 	}
 
 	@Override
-	public List<PointReply> AvgPrf(int pointNo) throws Exception {
+	public double AvgPrf(int pointNo) throws Exception {
 		return session.selectOne(namespace+".AvgPrf",pointNo);
 	}
 
 	@Override
-	public List<PointReply> AvgPrs(Map<String, Object>map) throws Exception {
-		return session.selectList(namespace+".AvgPrs",map);
+	public double AvgPrs(int pointNo) throws Exception {
+		return session.selectOne(namespace+".AvgPrs",pointNo);
 	}
 
 }

@@ -6,24 +6,36 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.dgit.domain.Criteria;
 import kr.or.dgit.domain.Point;
 import kr.or.dgit.domain.PointReply;
+import kr.or.dgit.persistence.PointDao;
 import kr.or.dgit.persistence.PointReplyDao;
 
 @Service
 public class PointReplyServiceImpl implements PointReplyService{
 	@Autowired
 	private PointReplyDao dao;
+	@Autowired
+	PointDao pDao;
 	@Override
 	public List<PointReply> replyList(int pointNo) throws Exception {
 		return dao.replyList(pointNo);
 	}
-
+	@Transactional
 	@Override
 	public void replyInsert(PointReply pr) throws Exception {
 		dao.replyInsert(pr);
+		
+		Point p = new Point();
+		p.setPrfavg(dao.AvgPrf(pr.getPointNo()));
+		p.setPrsavg(dao.AvgPrs(pr.getPointNo()));
+		p.setPointNo(pr.getPointNo());
+		
+		pDao.pointPrfavg(p);
+		pDao.pointPrsavg(p);
 	}
 
 	@Override
@@ -46,15 +58,6 @@ public class PointReplyServiceImpl implements PointReplyService{
 		return dao.count(pointNo);
 	}
 
-	/*@Override
-	public List<PointReply> AvgPrf(Map<String, Object>map) throws Exception {
-		
-		return "";
-	}
-
-	@Override
-	public List<PointReply> AvgPrs(Map<String, Object>map) throws Exception {
-		return dao.AvgPrs(map);
-	}*/
+	
 
 }

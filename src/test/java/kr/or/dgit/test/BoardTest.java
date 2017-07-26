@@ -67,7 +67,7 @@ public class BoardTest {
 		Rservice.replyUpdate(r);
 	}
 	
-	@Test
+	//@Test
 	public void testPointList()throws Exception{
 		pService.pointList();
 	}
@@ -89,17 +89,13 @@ public class BoardTest {
 		pService.listCriteria(cri);
 	}
 	
-	@Test
+	//@Test
 	public void testProintReplyAvg()throws Exception{
-		prDao.AvgPrf(3);
+		
 	}
 	//@Test
 	public void testProintReplyAvg2()throws Exception{
-		System.out.println("시작햇냐====================");
-		PointReply pr = new PointReply();
-		Map<String, Object>map = new HashMap<>();
-		map.put("pointNo", 2);
-		prDao.AvgPrs(map);
+		
 	}
 	
 	//@Test

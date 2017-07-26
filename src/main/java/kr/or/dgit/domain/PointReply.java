@@ -10,6 +10,9 @@ public class PointReply {
 	private double prS;
 	private String prContent;
 	private Date prDate;
+	private double avg;
+	
+	
 	public int getPrNo() {
 		return prNo;
 	}
@@ -52,7 +55,12 @@ public class PointReply {
 	public void setPrDate(Date prDate) {
 		this.prDate = prDate;
 	}
-	
+	public double getAvg() {
+		return avg;
+	}
+	public void setAvg(double avg) {
+		this.avg = avg;
+	}
 	@Override
 	public String toString() {
 		return "PointReply [prNo=" + prNo + ", memberId=" + memberId + ", pointNo=" + pointNo + ", prF=" + prF

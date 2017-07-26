@@ -19,7 +19,7 @@
 </style>
 	<footer>
         <div class="container">
-            <div class="row">
+            <div class="row" id="footer_row">
                 <div class="col-lg-12 text-center">
                     <p>Copyright &copy; Your Website 2014</p>
                 </div>
