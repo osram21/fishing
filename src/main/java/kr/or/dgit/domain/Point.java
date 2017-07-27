@@ -1,11 +1,11 @@
 package kr.or.dgit.domain;
 
 import java.util.Date;
+import java.util.List;
 
 public class Point {
 	private int pointNo;
 	private String memberId;
-	//사진파일
 	private String pointWhere;
 	private String pointTitle;
 	private double pointLatiude;
@@ -16,7 +16,15 @@ public class Point {
 	private String pointContent;
 	private double prfavg;
 	private double prsavg;
+	private List<String> pointfile;//사진파일
 	
+	
+	public List<String> getPointfile() {
+		return pointfile;
+	}
+	public void setPointfile(List<String> pointfile) {
+		this.pointfile = pointfile;
+	}
 	public String getPointContent() {
 		return pointContent;
 	}

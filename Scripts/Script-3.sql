@@ -20,3 +20,17 @@ group by point_no;
 update point
 set prfavg = 1.1
 where point_no = 2;
+
+
+-- 컬럼삭제 point 업로드 테이블 생성
+alter table point drop point_file;
+
+create table point_upload(
+	upload_pno int not null auto_increment, -- 업로드 번호
+	upload_pfile varchar(200) not null, -- 업로드 파일
+	point_no int not null, -- 포인트 번호
+	upload_pdate datetime not null default now(),
+	primary key(upload_pno)
+);
+select*from point;
+select*from pt_content;

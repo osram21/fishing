@@ -42,4 +42,7 @@ public interface PointDao {
 	public void pointPrfavg(Point p)throws Exception;
 	public void pointPrsavg(Point p)throws Exception;
 	
+	/*업로드*/
+	public void addUpload(String uploadPfile)throws Exception;
+	public void uploadDel(String uploadPfile)throws Exception;
 }

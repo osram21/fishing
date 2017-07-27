@@ -134,4 +134,13 @@
 			set prsavg = #{prsavg}
 			where point_no = #{pointNo}
 		</update>
+		
+		<!-- 업로드 -->
+		<insert id="addUpload">
+			insert into point_upload(upload_pfile,point_no) values (#{uploadPfile},LAST_INSERT_ID())
+		</insert>
+	
+		<delete id="uploadDel">
+			delete from point_upload where upload_pfile=#{uploadPfile}
+		</delete>
 </mapper>

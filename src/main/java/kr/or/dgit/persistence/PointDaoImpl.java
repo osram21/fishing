@@ -131,9 +131,14 @@ public class PointDaoImpl implements PointDao{
 		session.update(namespace+".pointPrsavg",p);
 	}
 
-	/*@Override
-	public void updateCnt(int pointNo) throws Exception {
-		session.update(namespace+".updateCnt",pointNo);
-	}*/
+	@Override
+	public void addUpload(String uploadPfile) throws Exception {
+		session.insert(namespace+".addUpload",uploadPfile);
+	}
 
+	@Override
+	public void uploadDel(String uploadPfile) throws Exception {
+		session.delete(namespace+".uploadDel",uploadPfile);
+		
+	}
 }

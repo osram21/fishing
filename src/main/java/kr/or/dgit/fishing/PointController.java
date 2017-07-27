@@ -1,25 +1,37 @@
 package kr.or.dgit.fishing;
 
-import java.util.HashMap;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
+import javax.annotation.Resource;
+
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.or.dgit.domain.PageMaker;
 import kr.or.dgit.domain.Point;
-import kr.or.dgit.domain.PointReply;
 import kr.or.dgit.domain.SerchCriteria;
 import kr.or.dgit.service.PointReplyService;
 import kr.or.dgit.service.PointService;
+import kr.or.dgit.util.MediaUtils;
+import kr.or.dgit.util.UploadUtils;
 
 @Controller
 @RequestMapping("/point")
@@ -32,13 +44,22 @@ public class PointController {
 	@Autowired
 	private PointReplyService prService;
 	
+	@Resource(name="uploadPath")
+	private String uploadPath;
+	
 	@RequestMapping(value="/insert",method=RequestMethod.GET)
 	public String insertGet()throws Exception{
 		return "point/insert";
 	}
 	
 	@RequestMapping(value="/insert",method=RequestMethod.POST)
-	public String insertPost(Point p)throws Exception{
+	public String insertPost(Point p,List<MultipartFile> imgFiles)throws Exception{
+		ArrayList<String>list = new ArrayList<>();
+		for(MultipartFile file : imgFiles){
+			String thumb = UploadUtils.uploadFile(uploadPath, file.getOriginalFilename(),file.getBytes());
+			list.add(thumb);
+		}
+		p.setPointfile(list);
 		service.pointInsert(p);
 		return"redirect:listPage";
 	}
@@ -92,5 +113,33 @@ public class PointController {
 		service.pointUpdate(p);
 		ba.addAttribute("pointNo",p.getPointNo());
 		return "redirect:read";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="displayFile")// displayFile?filename=파일이름 <- 커맨드 형식
+	public ResponseEntity<byte[]>displayFile(String uploadPfile) throws IOException{
+		ResponseEntity<byte[]> entity = null;
+		InputStream in = null;
+		
+		logger.info("displayFile"+uploadPfile);
+		
+		try {
+			String formatName = uploadPfile.substring(uploadPfile.lastIndexOf(".")+1);
+			MediaType mType = MediaUtils.getMediaType(formatName);
+			HttpHeaders header = new HttpHeaders();
+			header.setContentType(mType);
+			
+			logger.info("주소좀"+uploadPath+"/"+uploadPfile);
+			in = new FileInputStream(uploadPath+"/"+uploadPfile);
+			logger.info("in"+in);
+			entity = new ResponseEntity<byte[]>(IOUtils.toByteArray(in),header,HttpStatus.CREATED);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<byte[]>(HttpStatus.BAD_REQUEST);
+			
+		}finally {
+			in.close();
+		}
+		return entity;
 	}
 }

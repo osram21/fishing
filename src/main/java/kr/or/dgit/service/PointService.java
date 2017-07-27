@@ -25,4 +25,5 @@ public interface PointService {
 	public int searchCount(SerchCriteria cri)throws Exception;
 	
 	/*public void updateCnt(int pointNo)throws Exception;*/
+	public void uploadDel(String uploadPfile)throws Exception;
 }
