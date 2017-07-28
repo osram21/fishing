@@ -63,7 +63,7 @@
 				<article class="row">
 					<div class="col-md-2 col-sm-2 hidden-xs">
 						<figure class="thumbnail">
-							<img class="img-responsive" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" />
+							<img class="img-responsive" src=" ${point.pointfile } " />
 						</figure>
 					</div>
 						<div class="col-md-10 col-sm-10">
@@ -131,9 +131,10 @@
 <script type="text/javascript">
 	$(function() {
 		   $(".input-2").rating({displayOnly: true, step: 0.1});
-		    console.log(".input-2");
 		   $('.input-4').rating({displayOnly: true, step: 0.1});
 	})
+	
+	
 </script>
 <script type="text/javascript">
 

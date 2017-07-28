@@ -60,25 +60,30 @@
 		location.href="listPage";
 	}
 	
-	function sendFile(file, editor, welEditable) {
+	 function sendFile(file, editor, welEditable) {
 	    data = new FormData();
 	    data.append("file", file);
 	    	$.ajax({
 	        	data: data,
 	        	type: "POST",
-	        	url: "${pageContext.request.contextPath}/point/insert",
+	        	url: "${pageContext.request.contextPath}/point/imageUpload",
 	        	cache: false,
 	        	contentType: false,
+	        	enctype: "multipart/form-data",
 	        	processData: false,
-	        	success: function (url) {
-	            	editor.insertImage(welEditable, url);
+	        	success: function (url){ 
+	        		 var image = "displayTitleFile?uploadPfile="+url;//여기를 바꾸면 섬네일이 바뀜
+	            	 $("#summernote").summernote("editor.insertImage",image);
+	            	  /* editor.insertImage(welEditable, image); */
 	        	}
 	    	});
-		}
+		}  
+	
 	
 	$(function(){
 		$(document).ready(function() {
 		       $("#summernote").summernote();
+		      
 		 });	
 	})
 	
@@ -91,11 +96,14 @@
 	    	minHeight : 100, // set minimum height of editor
 	    	maxHeight : null, // set maximum height of editor
 	    	lang : 'ko-KR', // default: 'en-US'
-	    	onImageUpload : function(files, editor, welEditable) {
-	                sendFile(files[0], editor, welEditable);
-	        }
+	    	callbacks:{
+	    	onImageUpload : function(files,editor,welEditable) {
+	                 sendFile(files[0], editor, welEditable); 
+	                /* uploadImage(image[0]); */
+	        	}
+	    	}
+	    	
 		})
 	});
 </script>
-
 <%@ include file="../include/footer.jsp"%>		

@@ -53,9 +53,10 @@ public class PointController {
 	}
 	
 	@RequestMapping(value="/insert",method=RequestMethod.POST)
-	public String insertPost(Point p,List<MultipartFile> imgFiles)throws Exception{
+	public String insertPost(Point p,List<MultipartFile> files)throws Exception{
 		ArrayList<String>list = new ArrayList<>();
-		for(MultipartFile file : imgFiles){
+		for(MultipartFile file : files){
+			logger.info("파일이름 ---------"+file.getOriginalFilename());
 			String thumb = UploadUtils.uploadFile(uploadPath, file.getOriginalFilename(),file.getBytes());
 			list.add(thumb);
 		}
@@ -77,7 +78,6 @@ public class PointController {
 			list.get(i).setAvg(avg);
 		}*/
 		model.addAttribute("list",list);
-		
 		model.addAttribute("pr",list);
 		return "point/listPage";
 	}
@@ -142,4 +142,60 @@ public class PointController {
 		}
 		return entity;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="imageUpload",method=RequestMethod.POST)
+	public ResponseEntity<String> dragUploadResult(MultipartFile file){
+		ResponseEntity<String> entity = null;
+		logger.info("--------------------result---------------------");
+	
+		
+			logger.info("files.size:"+file.getSize());
+			logger.info("files.getOriginalFilename():"+file.getOriginalFilename());
+	
+		try {
+			//c:zzz/upload 폴더에 file를 upload 한다
+			
+		
+				String thum = UploadUtils.uploadFile(uploadPath, file.getOriginalFilename(),file.getBytes());
+				logger.info("thum -- " + thum);
+				
+			
+			entity = new ResponseEntity<String>(thum,HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+	}
+	
+	@ResponseBody
+	   @RequestMapping(value="displayTitleFile") //displayFile?filename=******.jpg
+	   public ResponseEntity<byte[]> displayTitleFile(String uploadPfile){
+	      ResponseEntity<byte[]> entity=null;
+	      InputStream in = null;
+	      try{
+
+	         String formetName= uploadPfile.substring(uploadPfile.lastIndexOf(".")+1);
+	         MediaType mtype= MediaUtils.getMediaType(formetName);
+	         HttpHeaders header= new HttpHeaders();
+	         header.setContentType(mtype);
+
+	         String front=uploadPfile.substring(0,12);
+	         String end= uploadPfile.substring(14);
+
+	         in= new FileInputStream(uploadPath+"/"+front+end);
+	         entity= new ResponseEntity<byte[]>(IOUtils.toByteArray(in),header,HttpStatus.CREATED);
+	      }catch (Exception e) {
+	         e.printStackTrace();
+	         entity= new ResponseEntity<byte[]>(HttpStatus.BAD_REQUEST);
+	      }finally{
+	         try {
+	            in.close();
+	         } catch (IOException e) {
+	            e.printStackTrace();
+	         }
+	      }
+	      return entity;
+	   }
 }

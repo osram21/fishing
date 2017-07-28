@@ -38,6 +38,10 @@ public class PointServiceImpl implements PointService{
 		for(int i=0;i<list.size();i++){
 			list.get(i).setPointContent(listContent.get(i).getPointContent());
 		}
+		List<Point> uploadList = dao.uploadList();
+		for(int i = 0; i <list.size();i++){
+			list.get(i).setPointfile(uploadList.get(i).getPointfile());
+		}
 		return list;
 	}
 

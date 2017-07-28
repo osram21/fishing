@@ -141,4 +141,9 @@ public class PointDaoImpl implements PointDao{
 		session.delete(namespace+".uploadDel",uploadPfile);
 		
 	}
+
+	@Override
+	public List<Point> uploadList() throws Exception {
+		return session.selectList(namespace+".uploadList");
+	}
 }

@@ -143,4 +143,8 @@
 		<delete id="uploadDel">
 			delete from point_upload where upload_pfile=#{uploadPfile}
 		</delete>
+		
+		<select id="uploadList" resultType="Point">
+			select * from point_upload
+		</select>
 </mapper>

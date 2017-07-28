@@ -45,4 +45,5 @@ public interface PointDao {
 	/*업로드*/
 	public void addUpload(String uploadPfile)throws Exception;
 	public void uploadDel(String uploadPfile)throws Exception;
+	public List<Point>uploadList()throws Exception;
 }

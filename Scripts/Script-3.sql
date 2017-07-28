@@ -34,3 +34,4 @@ create table point_upload(
 );
 select*from point;
 select*from pt_content;
+select*from point_upload;
