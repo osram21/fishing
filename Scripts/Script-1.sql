@@ -164,3 +164,11 @@ select board_no,member_no,board_title from board;
 
 insert into content(board_no,board_content)values
 			(6,'내용좀');
+
+create table point_upload(
+	upload_pno int not null auto_increment, -- 업로드 번호
+	upload_pfile varchar(200) not null, -- 업로드 파일
+	point_no int not null, -- 포인트 번호
+	upload_pdate datetime not null default now(),
+	primary key(upload_pno)
+);

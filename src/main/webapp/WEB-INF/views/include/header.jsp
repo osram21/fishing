@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
@@ -20,21 +21,34 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    
 
-    
+<style type="text/css">
+	#header1{
+		width: 100%;
+		height: 50px;
+	} 
+	.brand{
+		margin: 20px;
+		height: 170px;
+	}
+</style>
 </head>
 <body>
-
-    <div class="brand">Business Casual</div>
-    <div class="address-bar">3481 Melrose Place | Beverly Hills, CA 90210 | 123.456.7890</div>
-
+                  <div class="col-md-12 col-md-offset-10" id="header1">
+                  		<c:if test="${empty login }">
+                  			<a href="${pageContext.request.contextPath }/user/login" class="btn btn-default" role="button">Login</a>
+                  		</c:if>
+                  		<c:if test="${!empty login }">
+                  			${login }환영합니다<a href="${pageContext.request.contextPath }/user/logout" class="btn btn-default" role="button">logOut</a>
+                  		</c:if>
+                  </div>
+    
+     <div class="brand">Fishing
+     	
+                  
+           
+     </div>
+	
     <!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">
         <div class="container">

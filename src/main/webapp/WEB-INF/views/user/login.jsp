@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="../include/header.jsp"%>
 <link href="${pageContext.request.contextPath}/resources/bootpage/css/login.css" rel="stylesheet">
 <div class="container">
@@ -19,7 +20,13 @@
 				</form>
 			</div>
 		</div>
-		<<!-- div class="col-md-4">
+		 		<%-- <c:if test="${empty login }">
+                     <a href="${pageContext.request.contextPath }/point/listPage" class="form-control">Login / Sign In</a>
+                  </c:if> 
+                  <c:if test="${!empty login }">
+                     <a href="logout">Logout / Sign Out</a>
+                  </c:if> --%>
+		<!-- div class="col-md-4">
 			<div class="aro-pswd_info">
 				<div id="pswd_info">
 					<h4>Password must be requirements</h4>

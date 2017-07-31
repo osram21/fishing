@@ -65,7 +65,7 @@ public class PointController {
 		return"redirect:listPage";
 	}
 	@RequestMapping(value="/listPage",method=RequestMethod.GET)
-	public String listAll(Model model,@ModelAttribute("cri")SerchCriteria cri,Point p)throws Exception{
+	public String listAll(Model model,@ModelAttribute("cri")SerchCriteria cri,Point p,MultipartFile filePfile)throws Exception{
 		List<Point> list= service.listSearch(cri);
 		
 		PageMaker pageMaker = new PageMaker();
@@ -79,6 +79,13 @@ public class PointController {
 		}*/
 		model.addAttribute("list",list);
 		model.addAttribute("pr",list);
+		
+		/*ArrayList<String> file = new ArrayList<>();
+		logger.info("file"+file);
+		String thumb = UploadUtils.uploadFile(uploadPath,  filePfile.getOriginalFilename(), filePfile.getBytes());
+		file.add(thumb);
+		p.setPointfile(file);*/
+		
 		return "point/listPage";
 	}
 	@RequestMapping(value="/read",method=RequestMethod.GET)

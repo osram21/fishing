@@ -31,10 +31,10 @@ public class UserController {
 	@RequestMapping(value="/loginPost",method=RequestMethod.POST)
 	public void postLogin(Member member,Model model)throws Exception{
 		logger.info("==========================로그인===============================");
+		logger.info("오네"+member.toString());
 		Member b = service.Login(member.getMemberId(),member.getMemberPass());
-		logger.info("b는??"+b);
 		if(b == null){
-			return;
+			return; 
 		}
 		model.addAttribute("loginGo",b);
 	}
@@ -44,7 +44,7 @@ public class UserController {
 		session.removeAttribute("login");
 		session.invalidate();
 		//여기부분 메인부분 만들면 고쳐야 될듯?
-		String url = "/board/listPage";
+		String url = "/point/listPage";
 		return "redirect:"+url;
 	}
 }

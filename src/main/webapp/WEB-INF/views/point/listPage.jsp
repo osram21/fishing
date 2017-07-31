@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@page session="false" %>
+<%-- <%@page session="false" %> --%>
 <!DOCTYPE html>
 <%@ include file="../include/header.jsp"%>
-<%-- <link href="${pageContext.request.contextPath}/resources/bootpage/css/main.css" rel="stylesheet">  --%>
 <link href="${pageContext.request.contextPath}/resources/bootpage/css/star-rating.min.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/bootpage/js/star-rating.min.js" type="text/javascript"></script>
@@ -14,9 +13,9 @@
 	padding: 10px;
 }  
 
-.btn-default {
+ .btn-default {
 	float: rigth;
-}
+} 
 
 .col-md-4 {
 	float: right;
@@ -63,7 +62,7 @@
 				<article class="row">
 					<div class="col-md-2 col-sm-2 hidden-xs">
 						<figure class="thumbnail">
-							<img class="img-responsive" src=" ${point.pointfile } " />
+							<img class="img-responsive" src="<%-- displayFile?uploadPfile=${point.pointfile } --%>" />
 						</figure>
 					</div>
 						<div class="col-md-10 col-sm-10">

@@ -43,12 +43,14 @@
    		<mapping path="/board/modify"/>
    		<mapping path="/board/read"/>
    		<mapping path="/board/delete"/>
-   		<mapping path="/board/listPage"/>
+   		<!-- <mapping path="/board/listPage"/> -->
+   		<mapping path="/point/insert"/>
+   		<!-- <mapping path="/point/listPage"/> -->
+   		<mapping path="/point/modify"/>
+   		<mapping path="/point/delete"/>
+   		<mapping path="/point/read"/>
    		<beans:ref bean="authInterceptor"/>
    	</interceptor>
    </interceptors>
 	<context:component-scan base-package="kr.or.dgit.fishing" />
-	
-	
-	
 </beans:beans>

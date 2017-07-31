@@ -11,7 +11,6 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
 	
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		System.out.println("AUTH INTERCEPTOR PRE HANDLER==============");
 		HttpSession session = request.getSession();
 		String userid = (String)session.getAttribute("login");
 		System.out.println("userid :"+userid);
@@ -27,7 +26,6 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
 	private void saveDest(HttpServletRequest request){
 		String uri = request.getRequestURI();
 		String query = request.getQueryString();
-		
 		if(query == null || query.equals("null")){
 			query ="";
 		}else{
