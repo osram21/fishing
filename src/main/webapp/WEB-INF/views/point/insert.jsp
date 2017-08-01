@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
-
+<style>
+	nav{
+		height: 95px;
+	}
+	
+</style>
 <link href="${pageContext.request.contextPath}/resources/bootpage/css/main.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/bootpage/css/star-rating.min.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -73,6 +78,7 @@
 	        		 var image = "displayTitleFile?uploadPfile="+url;//여기를 바꾸면 섬네일이 바뀜
 	            	 $("#summernote").summernote("editor.insertImage",image);
 	            	  /* editor.insertImage(welEditable, image); */
+	            	 /*  $(".thumbnail").append("<li><img src='"+url+"'</li>"); */
 	        	}
 	    	});
 		}  

@@ -19,7 +19,7 @@
 			<div class="panel panel-default arrow left">
 				<div class="panel-body">
 			<div class="box-header">
-					<h3 class="box-title">BOARD LIST(${login })</h3>
+					<h3 class="box-title">자유 게시판</h3>
 				</div>
 			<div>
 				<select name="searchType">

@@ -37,7 +37,9 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-md-11">
+		<div class="panel panel-default arrow left">
+		<div class="panel-body">
+		
 			<h2 class="page-header">포인트 리스트</h2>
 			<div class="row">
 				<div class="box-body">
@@ -62,7 +64,8 @@
 				<article class="row">
 					<div class="col-md-2 col-sm-2 hidden-xs">
 						<figure class="thumbnail">
-							<img class="img-responsive" src="<%-- displayFile?uploadPfile=${point.pointfile } --%>" />
+						 ${point.pointfile }
+							<%-- <img class="img-responsive" src="displayFile?uploadPfile=${point.pointfile }"/> displayFile?uploadPfile=  --%>
 						</figure>
 					</div>
 						<div class="col-md-10 col-sm-10">
@@ -124,6 +127,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 </div>
 

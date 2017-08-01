@@ -56,17 +56,28 @@ public class PointController {
 	public String insertPost(Point p,List<MultipartFile> files)throws Exception{
 		ArrayList<String>list = new ArrayList<>();
 		for(MultipartFile file : files){
-			logger.info("파일이름 ---------"+file.getOriginalFilename());
+			/*logger.info("파일이름 ---------"+file.getOriginalFilename());*/
 			String thumb = UploadUtils.uploadFile(uploadPath, file.getOriginalFilename(),file.getBytes());
 			list.add(thumb);
 		}
-		p.setPointfile(list);
+		/*logger.info("이미지오냐"+list);*/
+		p.setPointfile(list.get(0));
+		/*logger.info("왜 못오냐고"+p.getPointfile());*/
 		service.pointInsert(p);
 		return"redirect:listPage";
 	}
 	@RequestMapping(value="/listPage",method=RequestMethod.GET)
 	public String listAll(Model model,@ModelAttribute("cri")SerchCriteria cri,Point p,MultipartFile filePfile)throws Exception{
+		
 		List<Point> list= service.listSearch(cri);
+		for(int i=0;i<list.size();i++){
+			String str=list.get(i).getPointContent().substring(list.get(i).getPointContent().indexOf("<img"),list.get(i).getPointContent().lastIndexOf("></p>")+1);
+			String content= list.get(i).getPointContent().substring(list.get(i).getPointContent().lastIndexOf("<p"));
+			list.get(i).setPointfile(str);
+			list.get(i).setPointContent(content);
+		}
+		
+		
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
@@ -94,7 +105,6 @@ public class PointController {
 		if(isModify == false){
 			service.updateCnt(pointNo);
 		}
-		/*p.setPointCount(p.getPointCount()+1);*/
 		model.addAttribute("point",p);
 		return "point/read";
 	}
@@ -133,10 +143,13 @@ public class PointController {
 		try {
 			String formatName = uploadPfile.substring(uploadPfile.lastIndexOf(".")+1);
 			MediaType mType = MediaUtils.getMediaType(formatName);
+			/*logger.info("이건 오냐"+mType);*/
 			HttpHeaders header = new HttpHeaders();
+			
+		/*	logger.info("뭐없냐"+header);*/
 			header.setContentType(mType);
 			
-			logger.info("주소좀"+uploadPath+"/"+uploadPfile);
+			/*logger.info("주소좀"+uploadPath+"/"+uploadPfile);*/
 			in = new FileInputStream(uploadPath+"/"+uploadPfile);
 			logger.info("in"+in);
 			entity = new ResponseEntity<byte[]>(IOUtils.toByteArray(in),header,HttpStatus.CREATED);
@@ -154,11 +167,11 @@ public class PointController {
 	@RequestMapping(value="imageUpload",method=RequestMethod.POST)
 	public ResponseEntity<String> dragUploadResult(MultipartFile file){
 		ResponseEntity<String> entity = null;
-		logger.info("--------------------result---------------------");
+	/*	logger.info("--------------------result---------------------");
 	
 		
 			logger.info("files.size:"+file.getSize());
-			logger.info("files.getOriginalFilename():"+file.getOriginalFilename());
+			logger.info("files.getOriginalFilename():"+file.getOriginalFilename());*/
 	
 		try {
 			//c:zzz/upload 폴더에 file를 upload 한다

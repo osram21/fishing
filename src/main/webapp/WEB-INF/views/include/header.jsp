@@ -41,6 +41,7 @@
                   		<c:if test="${!empty login }">
                   			${login }환영합니다<a href="${pageContext.request.contextPath }/user/logout" class="btn btn-default" role="button">logOut</a>
                   		</c:if>
+                  		
                   </div>
     
      <div class="brand">Fishing

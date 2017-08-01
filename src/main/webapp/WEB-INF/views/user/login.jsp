@@ -3,29 +3,36 @@
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="../include/header.jsp"%>
 <link href="${pageContext.request.contextPath}/resources/bootpage/css/login.css" rel="stylesheet">
+<style>
+	footer{
+		botton:0px;
+		position: fixed;
+	}
+</style>
 <div class="container">
 	<div class="row">
+	
 		<div class="col-md-4 col-md-offset-4 text-center">
+				
 			<div class="search-box">
+			<div class="panel panel-default arrow left">
+		<div class="panel-body">
 				<div class="caption">
-					<h3>Advance Password Validation</h3>
-					<p>Find to All</p>
+					<h3>Fishing World</h3>
 				</div>
 				<form action="loginPost"  method="POST"  class="loginForm">
 					<div class="input-group">
 						<input type="text" name="memberId" class="form-control" placeholder="Full Name">
 						<input type="password" name="memberPass" class="form-control" placeholder="Password">
-						<input type="submit" id="submit" class="form-control" value="Submit">
+						<input type="submit" id="submit" class="form-control" value="로그인">
+						<!-- <input type="submit" id="submit" class="form-control" value="회원가입"> -->
+						<button class="btn btn-default" onclick="btnNew()">회원가입</button>
 					</div>
 				</form>
 			</div>
+			</div>
+			</div>
 		</div>
-		 		<%-- <c:if test="${empty login }">
-                     <a href="${pageContext.request.contextPath }/point/listPage" class="form-control">Login / Sign In</a>
-                  </c:if> 
-                  <c:if test="${!empty login }">
-                     <a href="logout">Logout / Sign Out</a>
-                  </c:if> --%>
 		<!-- div class="col-md-4">
 			<div class="aro-pswd_info">
 				<div id="pswd_info">
@@ -42,3 +49,9 @@
 		</div> -->
 	</div>
 </div>
+<script>
+	function btnNew(){
+		location.href="fishing/join/joinForm";
+	}
+</script>
+<%@ include file="../include/footer.jsp"%>

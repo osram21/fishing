@@ -22,7 +22,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		//회원가입처리
 		if(m == null){
 			//로그인 가게 처리
-			response.sendRedirect("${pageContext.request.contextPath}/join/joinForm");
+			response.sendRedirect("login");
 		}else{
 			HttpSession session = request.getSession();
 			session.setAttribute(LOGIN,m.getMemberId());

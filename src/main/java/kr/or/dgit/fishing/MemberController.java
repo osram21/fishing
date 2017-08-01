@@ -28,6 +28,7 @@ public class MemberController {
 	@RequestMapping(value="/joinForm",method=RequestMethod.POST)
 	public String joinPost(Member m)throws Exception{
 		service.memberInsert(m);
+		logger.info("왜 없냐-======"+m);
 		return "redirect:/point/listPage";
 	}
 }

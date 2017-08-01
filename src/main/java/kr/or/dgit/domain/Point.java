@@ -16,13 +16,13 @@ public class Point {
 	private String pointContent;
 	private double prfavg;
 	private double prsavg;
-	private List<String> pointfile;//사진파일
+	private String pointfile;//사진파일
 	
 	
-	public List<String> getPointfile() {
+	public String getPointfile() {
 		return pointfile;
 	}
-	public void setPointfile(List<String> pointfile) {
+	public void setPointfile(String pointfile) {
 		this.pointfile = pointfile;
 	}
 	public String getPointContent() {

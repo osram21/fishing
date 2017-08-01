@@ -29,9 +29,9 @@
 						<p class="text-danger">${point.pointContent }</p>
 					</div>
 					<div class="col-md-10">
-					<button id="modify">수정하기</button>
-					<button id="delete">삭제하기</button>
-					<button id="list">리스트가기</button>
+					<button id="modify" class="btn btn-default">수정하기</button>
+					<button id="delete" class="btn btn-default">삭제하기</button>
+					<button id="list" class="btn btn-default">목록보기</button>
 					</div>
 						<form id="f1">
 							<input type="hidden" name="pointNo" value="${point.pointNo }">

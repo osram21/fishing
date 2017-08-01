@@ -25,9 +25,7 @@ public class PointServiceImpl implements PointService{
 	public void pointInsert(Point point) throws Exception {
 		dao.pointInsert(point);
 		dao.contentInsert(point);
-		for(String uploadPfile : point.getPointfile()){
-			dao.addUpload(uploadPfile);
-		}
+		dao.addUpload(point.getPointfile());
 	}
 	
 	@Transactional

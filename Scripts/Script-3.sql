@@ -25,7 +25,7 @@ where point_no = 2;
 -- 컬럼삭제 point 업로드 테이블 생성
 alter table point drop point_file;
 
-
+select*from member;
 select*from point;
 select*from pt_content;
 select*from point_upload;
