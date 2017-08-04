@@ -25,7 +25,11 @@ public class PointServiceImpl implements PointService{
 	public void pointInsert(Point point) throws Exception {
 		dao.pointInsert(point);
 		dao.contentInsert(point);
-		dao.addUpload(point.getPointfile());
+		for(String uploadPfile : point.getPointfile()){
+			dao.addUpload(uploadPfile);
+			System.out.println(uploadPfile);
+		}
+		System.out.println("오냐"+point.toString());
 	}
 	
 	@Transactional
@@ -108,4 +112,9 @@ public class PointServiceImpl implements PointService{
 	public void uploadDel(String uploadPfile) throws Exception {
 		dao.uploadDel(uploadPfile);
 	}
+
+	/*@Override
+	public List<String> uploadList(String pointfile) throws Exception {
+		return dao.uploadList(pointfile);
+	}*/
 }

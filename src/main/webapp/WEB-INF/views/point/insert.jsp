@@ -17,10 +17,6 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 
-<!-- include summernote css/js-->
-<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.6/summernote.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.6/summernote.js"></script>
-<script src="${pageContext.request.contextPath}/resources/bootpage/lang/summernote-ko-KR.js"></script>
 
 	<div class="panel panel-default arrow left">
 	<div class="panel-body">
@@ -47,8 +43,14 @@
 		<div class="form-group">
 				<label class="control-label col-sm-3">내용</label>
 					<div class="col-sm-5">
-						<textarea type="text" class="form-control" id="summernote" name="pointContent"></textarea>
+						<textarea class="form-control" name="pointContent" rows ="20" cols="20"></textarea>
 					</div>
+		</div>
+		<div class="form-group">
+		<label class="control-label col-sm-3">내용</label>
+			<div class="col-sm-5">
+				 <input type="file" name="uploadPfile" class="form-control" multiple="multiple"> 
+			</div>
 		</div>
 		<div class="col-sm-11 text-center">
 			<!-- <button type="button" class="btn btn-default" onclick="btnNew()">저장</button> -->
@@ -59,11 +61,11 @@
 </div>
 <script type="text/javascript">
 	function btnNew(){
-		$(".form-horizontal").submit();
+		/* $(".form-horizontal").submit(); */
 		location.href="listPage";
 	}
 	
-	 function sendFile(file, editor, welEditable) {
+	  /* function sendFile(file, editor, welEditable) {
 	    data = new FormData();
 	    data.append("file", file);
 	    	$.ajax({
@@ -77,20 +79,20 @@
 	        	success: function (url){ 
 	        		 var image = "displayTitleFile?uploadPfile="+url;//여기를 바꾸면 섬네일이 바뀜
 	            	 $("#summernote").summernote("editor.insertImage",image);
-	            	  /* editor.insertImage(welEditable, image); */
-	            	 /*  $(".thumbnail").append("<li><img src='"+url+"'</li>"); */
+	            	   editor.insertImage(welEditable, image); 
+	            	   $(".thumbnail").append("<li><img src='"+url+"'</li>");
 	        	}
 	    	});
-		}  
+		}   */
 	
 	
-	$(function(){
+	/* $(function(){
 		$(document).ready(function() {
 		       $("#summernote").summernote();
 		 });	
-	})
+	}) */
 	
-	$(function(){
+	/* $(function(){
 		$('#summernote').summernote({
 	        onblur : function(e) {
 	            $('#summercontent').html($('#summernote').code());
@@ -102,11 +104,11 @@
 	    	callbacks:{
 	    	onImageUpload : function(files,editor,welEditable) {
 	                 sendFile(files[0], editor, welEditable); 
-	                /* uploadImage(image[0]); */
+	                 uploadImage(image[0]); 
 	        	}
 	    	}
 	    	
-		})
-	});
+		}) 
+	}); */
 </script>
 <%@ include file="../include/footer.jsp"%>		

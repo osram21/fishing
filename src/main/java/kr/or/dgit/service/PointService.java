@@ -26,4 +26,5 @@ public interface PointService {
 	
 	/*public void updateCnt(int pointNo)throws Exception;*/
 	public void uploadDel(String uploadPfile)throws Exception;
+	/*public List<String>uploadList(String pointfile)throws Exception;*/
 }

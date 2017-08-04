@@ -64,8 +64,7 @@
 				<article class="row">
 					<div class="col-md-2 col-sm-2 hidden-xs">
 						<figure class="thumbnail">
-						 ${point.pointfile }
-							<%-- <img class="img-responsive" src="displayFile?uploadPfile=${point.pointfile }"/> displayFile?uploadPfile=  --%>
+							<img class="img-responsive" src="displayFile?uploadPfile=${point.pointfile }"/> <!-- displayFile?uploadPfile=  -->
 						</figure>
 					</div>
 						<div class="col-md-10 col-sm-10">

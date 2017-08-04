@@ -16,13 +16,13 @@ public class Point {
 	private String pointContent;
 	private double prfavg;
 	private double prsavg;
-	private String pointfile;//사진파일
+	private List<String> pointfile;//사진파일
 	
 	
-	public String getPointfile() {
+	public List<String> getPointfile() {
 		return pointfile;
 	}
-	public void setPointfile(String pointfile) {
+	public void setPointfile(List<String> pointfile) {
 		this.pointfile = pointfile;
 	}
 	public String getPointContent() {
@@ -103,7 +103,8 @@ public class Point {
 		return "Point [pointNo=" + pointNo + ", memberId=" + memberId + ", pointWhere=" + pointWhere + ", pointTitle="
 				+ pointTitle + ", pointLatiude=" + pointLatiude + ", pointHardness=" + pointHardness + ", pointCount="
 				+ pointCount + ", pointDate=" + pointDate + ", pointGood=" + pointGood + ", pointContent="
-				+ pointContent + ", prfavg=" + prfavg + ", prsavg=" + prsavg + "]";
+				+ pointContent + ", prfavg=" + prfavg + ", prsavg=" + prsavg + ", pointfile=" + pointfile + "]";
 	}
+	
 	
 }
