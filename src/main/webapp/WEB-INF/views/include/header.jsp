@@ -44,11 +44,7 @@
                   		
                   </div>
     
-     <div class="brand">Fishing
-     	
-                  
-           
-     </div>
+     <div class="brand">Fishing</div>
 	
     <!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">
@@ -71,7 +67,7 @@
                         <a href="${pageContext.request.contextPath }/point/listPage">Home</a>
                     </li>
                     <li>
-                        <a href="about.html">About</a>
+                        <a href="${pageContext.request.contextPath }/calendar/calListPage">About</a>
                     </li>
                     <li>
                         <a href="blog.html">Blog</a>
