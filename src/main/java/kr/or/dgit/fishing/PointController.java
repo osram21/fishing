@@ -62,8 +62,8 @@ public class PointController {
 			String thumb = UploadUtils.uploadFile(uploadPath, file.getOriginalFilename(),file.getBytes());
 			list.add(thumb);
 		}
-		p.setPointfile(list);
-		logger.info("사진넣엇냐"+p.getPointfile());
+		p.setUploadPfile(list);
+		logger.info("사진넣엇냐"+p.getUploadPfile());
 		service.pointInsert(p);
 		return"redirect:listPage";
 	}
@@ -140,7 +140,7 @@ public class PointController {
 			/*logger.info("이건 오냐"+mType);*/
 			HttpHeaders header = new HttpHeaders();
 			
-		/*	logger.info("뭐없냐"+header);*/
+			logger.info("뭐없냐"+header);
 			header.setContentType(mType);
 			
 			/*logger.info("주소좀"+uploadPath+"/"+uploadPfile);*/

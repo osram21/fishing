@@ -48,7 +48,7 @@ CREATE TABLE upload (
 -- 포인트장소
 CREATE TABLE point (
 	point_no      int      NOT null AUTO_increment, -- 포인트 번호
-	member_no     int      not NULL,     -- 회원 번호
+	member_id     VARCHAR(50) NOT NULL,     -- 회원 번호
 	point_file    VARCHAR(200) NULL,     -- 사진 파일
 	point_where   VARCHAR(200) NOT NULL, -- 장소 
 	point_title   VARCHAR(100) NOT NULL, -- 글 제목
@@ -102,6 +102,14 @@ create table event_img(
 	event_no int not null, -- 행사 번호
 	img_file varchar(200) not null, -- 행사 이미지 파일
 	primary key(img_no)
+);
+
+create table point_upload(
+	upload_pno int not null auto_increment, -- 업로드 번호
+	upload_pfile varchar(200) not null, -- 업로드 파일
+	point_no int not null, -- 포인트 번호
+	upload_pdate datetime not null default now(),
+	primary key(upload_pno)
 );
 
 alter table reply add constraint fk_board
@@ -165,10 +173,7 @@ select board_no,member_no,board_title from board;
 insert into content(board_no,board_content)values
 			(6,'내용좀');
 
-create table point_upload(
-	upload_pno int not null auto_increment, -- 업로드 번호
-	upload_pfile varchar(200) not null, -- 업로드 파일
-	point_no int not null, -- 포인트 번호
-	upload_pdate datetime not null default now(),
-	primary key(upload_pno)
-);
+select*from point;
+select*from upload;
+select*from point p join pt_content pt  on p.point_no = pt.point_no
+			join point_upload pUp on p.point_no = pUp.point_no;

@@ -29,3 +29,12 @@ select*from member;
 select*from point;
 select*from pt_content;
 select*from point_upload;
+
+select*from point p join pt_content pt join point_upload pUp on p.point_no = pt.point_no = pUp.point_no;
+
+select*from point p join pt_content pt  on p.point_no = pt.point_no
+join point_upload pUp on p.point_no = pUp.point_no;
+
+p.point_no 
+
+select*from point p join point_upload pl on p.point_no=pl.point_no;

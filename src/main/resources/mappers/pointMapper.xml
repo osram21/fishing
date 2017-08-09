@@ -69,7 +69,8 @@
 		</select>
 		
 		<select id="listCriteria" resultType="Point">
-			select*from point p join pt_content pt on p.point_no = pt.point_no
+			select*from point p join pt_content pt  on p.point_no = pt.point_no
+			join point_upload pUp on p.point_no = pUp.point_no
 			limit #{pageStart},#{perPageNum}
 		</select>
 		
@@ -107,7 +108,8 @@
 	</sql>
 	
 		<select id="listSearch" resultType="Point">
-			select*from point p join pt_content pt on p.point_no = pt.point_no
+			select*from point p join pt_content pt  on p.point_no = pt.point_no
+			join point_upload pUp on p.point_no = pUp.point_no
 			<include refid="search"/>
 			limit #{pageStart},#{perPageNum}
 		</select>

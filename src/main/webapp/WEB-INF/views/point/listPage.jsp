@@ -64,7 +64,7 @@
 				<article class="row">
 					<div class="col-md-2 col-sm-2 hidden-xs">
 						<figure class="thumbnail">
-							<img class="img-responsive" src="displayFile?uploadPfile=${point.pointfile }"/> <!-- displayFile?uploadPfile=  -->
+							<img class="img-responsive" src="displayFile?uploadPfile=${point.uploadPfile }"/> <!-- displayFile?uploadPfile=  -->
 						</figure>
 					</div>
 						<div class="col-md-10 col-sm-10">
@@ -130,16 +130,16 @@
 	</div>
 </div>
 
-<script type="text/javascript">
-	$(function() {
-		   $(".input-2").rating({displayOnly: true, step: 0.1});
-		   $('.input-4').rating({displayOnly: true, step: 0.1});
-	})
+<!-- <script type="text/javascript">
 	
 	
-</script>
+	
+</script> -->
 <script type="text/javascript">
-
+$(function() {
+	   $(".input-2").rating({displayOnly: true, step: 0.1});
+	   $('.input-4').rating({displayOnly: true, step: 0.1});
+})
 $(function() {
 	$("#searchBtn").click(
 		function() {

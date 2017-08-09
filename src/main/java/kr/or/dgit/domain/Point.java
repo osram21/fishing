@@ -16,14 +16,15 @@ public class Point {
 	private String pointContent;
 	private double prfavg;
 	private double prsavg;
-	private List<String> pointfile;//사진파일
+	private List<String> uploadPfile;//사진파일
 	
 	
-	public List<String> getPointfile() {
-		return pointfile;
+	
+	public List<String> getUploadPfile() {
+		return uploadPfile;
 	}
-	public void setPointfile(List<String> pointfile) {
-		this.pointfile = pointfile;
+	public void setUploadPfile(List<String> uploadPfile) {
+		this.uploadPfile = uploadPfile;
 	}
 	public String getPointContent() {
 		return pointContent;
@@ -98,13 +99,12 @@ public class Point {
 	public void setPrsavg(double prsavg) {
 		this.prsavg = prsavg;
 	}
+	
 	@Override
 	public String toString() {
 		return "Point [pointNo=" + pointNo + ", memberId=" + memberId + ", pointWhere=" + pointWhere + ", pointTitle="
 				+ pointTitle + ", pointLatiude=" + pointLatiude + ", pointHardness=" + pointHardness + ", pointCount="
 				+ pointCount + ", pointDate=" + pointDate + ", pointGood=" + pointGood + ", pointContent="
-				+ pointContent + ", prfavg=" + prfavg + ", prsavg=" + prsavg + ", pointfile=" + pointfile + "]";
+				+ pointContent + ", prfavg=" + prfavg + ", prsavg=" + prsavg + ", uploadPfile=" + uploadPfile + "]";
 	}
-	
-	
 }

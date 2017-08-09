@@ -25,7 +25,7 @@ public class PointServiceImpl implements PointService{
 	public void pointInsert(Point point) throws Exception {
 		dao.pointInsert(point);
 		dao.contentInsert(point);
-		for(String uploadPfile : point.getPointfile()){
+		for(String uploadPfile : point.getUploadPfile()){
 			dao.addUpload(uploadPfile);
 			System.out.println(uploadPfile);
 		}
@@ -42,7 +42,7 @@ public class PointServiceImpl implements PointService{
 		}
 		List<Point> uploadList = dao.uploadList();
 		for(int i = 0; i <list.size();i++){
-			list.get(i).setPointfile(uploadList.get(i).getPointfile());
+			list.get(i).setUploadPfile(uploadList.get(i).getUploadPfile());
 		}
 		return list;
 	}
@@ -78,6 +78,8 @@ public class PointServiceImpl implements PointService{
 	
 	@Override
 	public List<Point> listCriteria(Criteria cri) throws Exception {
+		
+		
 		/*List<Point> list = dao.listCriteria(cri);
 		List<Point> conList = dao.listConCriteria(cri);
 		for(int i=0;i<list.size();i++){
