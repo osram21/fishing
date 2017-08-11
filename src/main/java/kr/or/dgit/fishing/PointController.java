@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.or.dgit.domain.PageMaker;
@@ -53,18 +54,19 @@ public class PointController {
 	}
 	
 	@RequestMapping(value="/insert",method=RequestMethod.POST)
-	public String insertPost(Point p,List<MultipartFile> uploadPfile)throws Exception{
-		
+	public String insertPost(Point p, MultipartHttpServletRequest files)throws Exception{
+		logger.info("오냐"+p.toString());
 		ArrayList<String>list = new ArrayList<>();
 		
-		for(MultipartFile file : uploadPfile){
+		List<MultipartFile> fileList = files.getFiles("files");
+		
+		for(MultipartFile file : fileList){
 			logger.info("파일이름 ---------"+file.getOriginalFilename());
 			String thumb = UploadUtils.uploadFile(uploadPath, file.getOriginalFilename(),file.getBytes());
 			list.add(thumb);
 		}
-		p.setUploadPfile(list);
 		logger.info("사진넣엇냐"+p.getUploadPfile());
-		service.pointInsert(p);
+		service.pointInsert(p,list);
 		return"redirect:listPage";
 	}
 	@RequestMapping(value="/listPage",method=RequestMethod.GET)
@@ -96,10 +98,13 @@ public class PointController {
 	@RequestMapping(value="/read",method=RequestMethod.GET)
 	public String read(int pointNo,Model model,@ModelAttribute("cri")SerchCriteria cri,boolean isModify)throws Exception{
 		Point p = service.pointByno(pointNo);
+		List<String> imgDao = service.uploadFileByNo(pointNo);
+		
 		if(isModify == false){
 			service.updateCnt(pointNo);
 		}
 		model.addAttribute("point",p);
+		model.addAttribute("imglist",imgDao);
 		return "point/read";
 	}
 	@RequestMapping(value="/delete",method=RequestMethod.POST)
@@ -132,7 +137,7 @@ public class PointController {
 		ResponseEntity<byte[]> entity = null;
 		InputStream in = null;
 		
-		logger.info("displayFile"+uploadPfile);
+		logger.info("displayFileㅇㅇ"+uploadPfile);
 		
 		try {
 			String formatName = uploadPfile.substring(uploadPfile.lastIndexOf(".")+1);

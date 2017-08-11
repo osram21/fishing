@@ -132,8 +132,11 @@ public class PointDaoImpl implements PointDao{
 	}
 
 	@Override
-	public void addUpload(String uploadPfile) throws Exception {
-		session.insert(namespace+".addUpload",uploadPfile);
+	public void addUpload(String uploadPfile,int pNo) throws Exception {
+		Map<String, Object> map= new HashMap<>();
+		map.put("uploadPfile", uploadPfile);
+		map.put("pNo", pNo);
+		session.insert(namespace+".addUpload",map);
 	}
 
 	@Override
@@ -143,7 +146,17 @@ public class PointDaoImpl implements PointDao{
 	}
 
 	@Override
-	public List<Point> uploadList() throws Exception {
+	public List<String> uploadList() throws Exception {
 		return session.selectList(namespace+".uploadList");
+	}
+
+	@Override
+	public List<String> uploadFileByNo(int pointNo) throws Exception {
+		return session.selectList(namespace+".uploadFileByNo",pointNo);
+	}
+
+	@Override
+	public int pointLastInsertId() throws Exception {
+		return session.selectOne(namespace+".pointLastInsertId");
 	}
 }

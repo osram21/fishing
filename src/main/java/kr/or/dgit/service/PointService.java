@@ -8,7 +8,7 @@ import kr.or.dgit.domain.Point;
 import kr.or.dgit.domain.SerchCriteria;
 
 public interface PointService {
-	public void pointInsert(Point point)throws Exception;
+	public void pointInsert(Point point,List<String>files)throws Exception;
 	
 	public List<Point> pointList()throws Exception;
 	
@@ -27,4 +27,5 @@ public interface PointService {
 	/*public void updateCnt(int pointNo)throws Exception;*/
 	public void uploadDel(String uploadPfile)throws Exception;
 	/*public List<String>uploadList(String pointfile)throws Exception;*/
+	public List<String>uploadFileByNo(int pointNo)throws Exception;
 }

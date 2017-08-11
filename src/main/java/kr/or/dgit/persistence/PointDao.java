@@ -43,7 +43,10 @@ public interface PointDao {
 	public void pointPrsavg(Point p)throws Exception;
 	
 	/*업로드*/
-	public void addUpload(String uploadPfile)throws Exception;
+	public void addUpload(String uploadPfile,int pNo)throws Exception;
 	public void uploadDel(String uploadPfile)throws Exception;
-	public List<Point>uploadList()throws Exception;
+	public List<String>uploadList()throws Exception;
+	
+	public int pointLastInsertId() throws Exception;	
+	public List<String>uploadFileByNo(int pointNo)throws Exception;
 }

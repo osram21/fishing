@@ -49,7 +49,7 @@
 		<div class="form-group">
 		<label class="control-label col-sm-3">내용</label>
 			<div class="col-sm-5">
-				 <input type="file" name="uploadPfile" class="form-control" multiple="multiple"> 
+				<input type="file" name="files" class="form-control" multiple="multiple">
 			</div>
 		</div>
 		<div class="col-sm-11 text-center">

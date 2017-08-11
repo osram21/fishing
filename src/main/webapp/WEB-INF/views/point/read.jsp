@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="../include/header.jsp"%>
 
 <link href="${pageContext.request.contextPath}/resources/bootpage/css/main.css" rel="stylesheet">
@@ -26,7 +27,11 @@
 							&nbsp;조회수 ${point.pointCount }
 						</div>
 					 <div class="col-md-10" style="margin-top: 20px">
-						<p class="text-danger">${point.pointContent }</p>
+						<p class="text-danger">
+						<c:forEach var="item" items="${imglist }">
+							<img src="displayFile?uploadPfile=${item }"/>
+						</c:forEach>
+						${point.pointContent }</p>
 					</div>
 					<div class="col-md-10">
 					<button id="modify" class="btn btn-default">수정하기</button>

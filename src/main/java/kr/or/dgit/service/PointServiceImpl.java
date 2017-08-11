@@ -22,13 +22,16 @@ public class PointServiceImpl implements PointService{
 	
 	@Transactional
 	@Override
-	public void pointInsert(Point point) throws Exception {
+	public void pointInsert(Point point,List<String>files) throws Exception {
 		dao.pointInsert(point);
 		dao.contentInsert(point);
-		for(String uploadPfile : point.getUploadPfile()){
-			dao.addUpload(uploadPfile);
-			System.out.println(uploadPfile);
+		int lastId=dao.pointLastInsertId();
+		//for(String uploadPfile : point.getUploadPfile()){
+		for(String uplpadPfile:files){
+			dao.addUpload(uplpadPfile,lastId);
+			System.out.println(point.getUploadPfile());
 		}
+		//}
 		System.out.println("오냐"+point.toString());
 	}
 	
@@ -40,10 +43,10 @@ public class PointServiceImpl implements PointService{
 		for(int i=0;i<list.size();i++){
 			list.get(i).setPointContent(listContent.get(i).getPointContent());
 		}
-		List<Point> uploadList = dao.uploadList();
+		/*List<Point> uploadList = dao.uploadList();
 		for(int i = 0; i <list.size();i++){
 			list.get(i).setUploadPfile(uploadList.get(i).getUploadPfile());
-		}
+		}*/
 		return list;
 	}
 
@@ -113,6 +116,11 @@ public class PointServiceImpl implements PointService{
 	@Override
 	public void uploadDel(String uploadPfile) throws Exception {
 		dao.uploadDel(uploadPfile);
+	}
+
+	@Override
+	public List<String> uploadFileByNo(int pointNo) throws Exception {
+		return dao.uploadFileByNo(pointNo);
 	}
 
 	/*@Override

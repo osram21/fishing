@@ -98,8 +98,8 @@ public class BoardTest {
 		
 	}
 	
-	//@Test
-	public void testInsert()throws Exception{
+	/*@Test*/
+/*	public void testInsert()throws Exception{
 		Point p = new Point();
 		p.setMemberId("dd");
 		p.setPointWhere("여기");
@@ -107,5 +107,5 @@ public class BoardTest {
 		p.setPointContent("dd");
 		pService.pointInsert(p);
 		
-	}
+	}*/
 }

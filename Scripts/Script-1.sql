@@ -175,5 +175,14 @@ insert into content(board_no,board_content)values
 
 select*from point;
 select*from upload;
-select*from point p join pt_content pt  on p.point_no = pt.point_no
-			join point_upload pUp on p.point_no = pUp.point_no;
+select p.point_no,p.member_id,p.point_where, p.point_title,p.point_count,p.point_date,pt.point_content,pUp.upload_pfile from point p join pt_content pt  on p.point_no = pt.point_no
+join point_upload pUp on p.point_no = pUp.point_no;
+(select point_no from point_upload where point_no=13);
+			
+select upload_pfile from point_upload where point_no=9;
+			select*from point_upload;
+			
+select*from point p join pt_content pt on p.point_no = pt.point_no;
+
+
+select LAST_INSERT_ID();
